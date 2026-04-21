@@ -1,9 +1,11 @@
-const DEPLOY_URL = 'rohit-nandini.vercel.app'
+const DEPLOY_URL = 'https://rohit-nandini.vercel.app'
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/xDXkPKzS7PEKkJ9y5'
-export const WHATSAPP_NUMBER = '919833000000'
+export const WHATSAPP_NUMBER = '+91 8796119608'
 
 export function getWhatsAppShareUrl(): string {
-  const message = `You're invited to Rohit & Nandini's wedding on 26th April 2026. Open the invitation: ${DEPLOY_URL}`
+  const message = `Rohit & Nandini are getting married! ❤️
+
+With love in our hearts and joy in every moment, we invite you to celebrate the beginning of our forever together.${DEPLOY_URL}`
   return `https://wa.me/?text=${encodeURIComponent(message)}`
 }
 

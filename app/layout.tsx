@@ -33,11 +33,11 @@ const notoDevanagari = Noto_Serif_Devanagari({
 })
 
 export const viewport: Viewport = {
-  themeColor: '#7A1142', // Rani pink as the theme color for mobile address bars
+  themeColor: '#D10056', // Updated to Pink palette
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rohit-nandini.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://invitation-zeta-ten.vercel.app'),
   title: 'Rohit & Nandini · 26 April 2026',
   description: "You're invited to our wedding. With the blessings of the Ankad family.",
   icons: {
