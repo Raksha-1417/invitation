@@ -51,27 +51,27 @@ export default function Blessings() {
     >
       {/* Corner ornament top-left */}
       <svg className="absolute top-4 left-4 opacity-30" width={40} height={40} viewBox="0 0 40 40" fill="none">
-        <path d="M2 38 Q2 2 38 2" stroke="#D10056" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="4" cy="36" r="2" fill="#D10056"/>
-        <circle cx="36" cy="4" r="2" fill="#008080"/>
+        <path d="M2 38 Q2 2 38 2" stroke="#D10056" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="4" cy="36" r="2" fill="#D10056" />
+        <circle cx="36" cy="4" r="2" fill="#008080" />
       </svg>
       {/* Corner ornament top-right */}
       <svg className="absolute top-4 right-4 opacity-30" width={40} height={40} viewBox="0 0 40 40" fill="none">
-        <path d="M38 38 Q38 2 2 2" stroke="#D10056" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="36" cy="36" r="2" fill="#D10056"/>
-        <circle cx="4" cy="4" r="2" fill="#008080"/>
+        <path d="M38 38 Q38 2 2 2" stroke="#D10056" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="36" cy="36" r="2" fill="#D10056" />
+        <circle cx="4" cy="4" r="2" fill="#008080" />
       </svg>
       {/* Corner ornament bottom-left */}
       <svg className="absolute bottom-4 left-4 opacity-30" width={40} height={40} viewBox="0 0 40 40" fill="none">
-        <path d="M2 2 Q2 38 38 38" stroke="#008080" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="4" cy="4" r="2" fill="#008080"/>
-        <circle cx="36" cy="36" r="2" fill="#D10056"/>
+        <path d="M2 2 Q2 38 38 38" stroke="#008080" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="4" cy="4" r="2" fill="#008080" />
+        <circle cx="36" cy="36" r="2" fill="#D10056" />
       </svg>
       {/* Corner ornament bottom-right */}
       <svg className="absolute bottom-4 right-4 opacity-30" width={40} height={40} viewBox="0 0 40 40" fill="none">
-        <path d="M38 2 Q38 38 2 38" stroke="#008080" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="36" cy="4" r="2" fill="#008080"/>
-        <circle cx="4" cy="36" r="2" fill="#D10056"/>
+        <path d="M38 2 Q38 38 2 38" stroke="#008080" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="36" cy="4" r="2" fill="#008080" />
+        <circle cx="4" cy="36" r="2" fill="#D10056" />
       </svg>
 
       {/* Ivory card border */}
@@ -111,22 +111,22 @@ export default function Blessings() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="flex-1 h-px" style={{ background: 'rgba(0,128,128,0.2)' }}/>
-          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#D10056', opacity: 0.5 }}/>
-          <div className="flex-1 h-px" style={{ background: 'rgba(0,128,128,0.2)' }}/>
+          <div className="flex-1 h-px" style={{ background: 'rgba(0,128,128,0.2)' }} />
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#D10056', opacity: 0.5 }} />
+          <div className="flex-1 h-px" style={{ background: 'rgba(0,128,128,0.2)' }} />
         </motion.div>
 
         {/* Groom's parents */}
         <FamilyCard
           role="Groom's Parents"
-          names="Mr. Ganesh Baburao & Mrs. Sunita Sharma"
+          names="Mr. Ganesh Baburao Ankad & Mrs. Kalavati Ankad"
           delay={100}
         />
 
         {/* Bride's parents */}
         <FamilyCard
           role="Bride's Parents"
-          names="Mr. Prakash Anandrao Bhoir & Mrs. Anjali Mehta"
+          names="Mr. Prakash Anandrao Bhoir & Mrs. Shankuntala Bhoir"
           delay={200}
         />
 

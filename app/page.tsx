@@ -23,7 +23,13 @@ export default function Home() {
 
   const handleEnvelopeOpen = () => {
     setEnvelopeOpen(true)
-    // Most users click "Open Invitation" which triggers the window click listener below
+    // Attempt to play immediately when envelope opens
+    const audio = audioRef.current
+    if (audio && audio.paused) {
+      audio.currentTime = 58
+      audio.play().then(() => setPlaying(true)).catch(() => {})
+    }
+    
     setTimeout(() => {
       const main = document.getElementById('main-content')
       main?.scrollIntoView({ behavior: 'smooth' })
@@ -33,10 +39,14 @@ export default function Home() {
   const toggleMusic = () => {
     const audio = audioRef.current
     if (!audio) return
+    
     if (playing) {
       audio.pause()
       setPlaying(false)
     } else {
+      if (audio.currentTime === 0) {
+        audio.currentTime = 58
+      }
       audio.play().catch(e => console.log("Manual play toggle failed:", e))
       setPlaying(true)
     }
@@ -48,15 +58,12 @@ export default function Home() {
     if (!audio) return
 
     const tryPlay = () => {
-      // If already playing or we don't have the audio, skip
       if (!audio) return
       
-      // Attempt play starting at 58s
       if (audio.paused) {
         audio.currentTime = 58
         audio.play().then(() => {
           setPlaying(true)
-          // Cleanup listeners after successful start
           cleanup()
         }).catch(() => {
           // Silent catch: Browser is still blocking autoplay
@@ -70,20 +77,22 @@ export default function Home() {
       window.removeEventListener('scroll', tryPlay)
     }
 
-    // 1. Try playing immediately on mount (might be blocked)
     tryPlay()
-
-    // 2. Listen for ANY interaction to kickstart the audio
     window.addEventListener('click', tryPlay)
     window.addEventListener('touchstart', tryPlay)
     window.addEventListener('scroll', tryPlay, { passive: true })
     
     return cleanup
-  }, []) // Remove 'playing' from dependencies to avoid re-adding listeners
+  }, [])
 
   return (
     <>
-      <audio ref={audioRef} loop preload="auto" src="/music/wedding.mp3" />
+      <audio 
+        ref={audioRef} 
+        loop
+        preload="auto" 
+        src="/music/wedding.mp3" 
+      />
       
       {!envelopeOpen && <Envelope onOpen={handleEnvelopeOpen} />}
       

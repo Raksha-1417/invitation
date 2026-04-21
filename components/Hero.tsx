@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import Divider from './svg/Divider'
 import Paisley from './svg/Paisley'
 
@@ -400,7 +401,6 @@ export default function Hero() {
            <div className="w-20 h-px bg-[#008080] mx-auto opacity-50 mb-3" />
            <p className="font-serif uppercase tracking-widest text-xs font-bold opacity-90">Nashik, Maharashtra</p>
         </motion.div>
-
       </div>
     </section>
   )

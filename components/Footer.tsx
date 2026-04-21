@@ -1,11 +1,12 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+import Link from 'next/link'
 import ActionButtons from './ActionButtons'
 import { scrollReveal } from '@/lib/motion'
 import { getDesignerWhatsAppUrl } from '@/lib/share'
 
-const BRAND_NAME = 'Ankad Invites'
+const BRAND_NAME = 'Raksha Raj'
 const WHATSAPP_URL = getDesignerWhatsAppUrl()
 
 export default function Footer() {
@@ -24,15 +25,15 @@ export default function Footer() {
         <div className="relative w-40 h-40 flex items-center justify-center">
           {/* Ornate Frame SVG */}
           <svg className="absolute inset-0 w-full h-full text-[#008080]" viewBox="0 0 100 100" fill="none">
-            <path d="M50 5 L85 20 L90 50 L85 80 L50 95 L15 80 L10 50 L15 20 Z" stroke="currentColor" strokeWidth="1.5" className="opacity-80"/>
-            <path d="M50 10 L80 23 L84 50 L80 77 L50 90 L20 77 L16 50 L20 23 Z" stroke="#D10056" strokeWidth="0.5" className="opacity-60"/>
+            <path d="M50 5 L85 20 L90 50 L85 80 L50 95 L15 80 L10 50 L15 20 Z" stroke="currentColor" strokeWidth="1.5" className="opacity-80" />
+            <path d="M50 10 L80 23 L84 50 L80 77 L50 90 L20 77 L16 50 L20 23 Z" stroke="#D10056" strokeWidth="0.5" className="opacity-60" />
             {/* Minimal Peacock Crown */}
-            <path d="M45 15 C47 5, 53 5, 55 15 C45 25, 55 25, 45 15" fill="#D10056" opacity="0.8"/>
+            <path d="M45 15 C47 5, 53 5, 55 15 C45 25, 55 25, 45 15" fill="#D10056" opacity="0.8" />
             <circle cx="50" cy="10" r="1.5" fill="#008080" />
             <circle cx="47" cy="12" r="1" fill="#008080" />
             <circle cx="53" cy="12" r="1" fill="#008080" />
           </svg>
-          
+
           <span className="font-script text-[#D10056] text-6xl leading-none relative z-10" style={{ textShadow: '0 2px 10px rgba(209,0,86,0.2)' }}>R<span className="text-[#008080] text-5xl px-1">&amp;</span>N</span>
         </div>
       </motion.div>
@@ -100,14 +101,14 @@ export default function Footer() {
         Designed with love by{' '}
         <strong className="text-[#D10056] font-display tracking-wide">{BRAND_NAME}</strong>
       </p>
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mt-1 text-xs font-serif text-[#008080] hover:text-[#D10056] transition-colors focus-visible:outline-2 focus-visible:outline-[#D10056] focus-visible:outline-offset-2 font-bold"
+
+      {/* FINAL CTA: Book Invitation */}
+      <Link
+        href="/book"
+        className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-[#D10056] to-[#7A1142] text-white font-display text-[11px] tracking-[0.2em] uppercase rounded-full shadow-lg shadow-[#D10056]/20 transition-all hover:-translate-y-1 active:scale-95"
       >
-        Book your invitation →
-      </a>
+        Book Your Own Invitation website →
+      </Link>
 
       {/* Final spacer */}
       <div className="h-12" />

@@ -165,6 +165,26 @@ function WeddingCard() {
   )
 }
 
+function SangeetCard() {
+  return (
+    <motion.article 
+      variants={cardReveal} 
+      initial="hidden" 
+      whileInView="show" 
+      viewport={{ once: true, amount: 0.1 }} 
+      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(122,17,66,0.15)] flex justify-center mt-6"
+    >
+      <Image 
+        src="/photos/sangeet.png" 
+        alt="Sangeet Ceremony Invitation" 
+        width={400} 
+        height={600} 
+        className="w-full h-auto object-cover" 
+      />
+    </motion.article>
+  )
+}
+
 export default function Ceremonies() {
   const prefersReduced = useReducedMotion()
 
@@ -183,6 +203,7 @@ export default function Ceremonies() {
 
       <div className="flex flex-col gap-6 max-w-sm mx-auto">
         <MehendiCard />
+        <SangeetCard />
         <HaldiCard />
         <WeddingCard />
       </div>
