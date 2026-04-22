@@ -78,7 +78,7 @@ function MehendiCard() {
       initial="hidden" 
       whileInView="show" 
       viewport={{ once: true, amount: 0.1 }} 
-      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(10,92,74,0.15)] flex justify-center"
+      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(10,92,74,0.15)] flex flex-col items-center bg-[#FBF6EC] pb-4"
     >
       <Image 
         src="/photos/mehendi.png" 
@@ -88,6 +88,7 @@ function MehendiCard() {
         className="w-full h-auto object-cover" 
         priority
       />
+      <p className="font-serif italic text-[#0A5C4A] text-sm mt-3">At Residence</p>
     </motion.article>
   )
 }
@@ -99,7 +100,7 @@ function HaldiCard() {
       initial="hidden" 
       whileInView="show" 
       viewport={{ once: true, amount: 0.1 }} 
-      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(184,96,26,0.15)] flex justify-center mt-6"
+      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(184,96,26,0.15)] flex flex-col items-center mt-6 bg-[#FBF6EC] pb-4"
     >
       <Image 
         src="/photos/haldi.png" 
@@ -108,6 +109,7 @@ function HaldiCard() {
         height={600} 
         className="w-full h-auto object-cover" 
       />
+      <p className="font-serif italic text-[#B8601A] text-sm mt-3">At Swapnapurti Lawns</p>
     </motion.article>
   )
 }
@@ -172,7 +174,7 @@ function SangeetCard() {
       initial="hidden" 
       whileInView="show" 
       viewport={{ once: true, amount: 0.1 }} 
-      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(122,17,66,0.15)] flex justify-center mt-6"
+      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(122,17,66,0.15)] flex flex-col items-center mt-6 bg-[#FBF6EC] pb-4"
     >
       <Image 
         src="/photos/sangeet.png" 
@@ -181,6 +183,7 @@ function SangeetCard() {
         height={600} 
         className="w-full h-auto object-cover" 
       />
+      <p className="font-serif italic text-[#7A1142] text-sm mt-3">At Residence</p>
     </motion.article>
   )
 }

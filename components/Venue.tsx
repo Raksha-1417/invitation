@@ -90,7 +90,7 @@ export default function Venue() {
         <div className="absolute -bottom-4 -right-4 pointer-events-none opacity-80 rotate-180"><VenueFloralCorner color="#D10056" /></div>
 
         <div className="relative z-10 text-center flex flex-col items-center">
-          <p className="font-serif italic text-[#008080] text-lg mb-2">Mehendi, Haldi &amp; Wedding</p>
+          <p className="font-serif italic text-[#008080] text-lg mb-2">Haldi &amp; Wedding</p>
           <h3 className="font-display text-[#D10056] text-[28px] tracking-wide mb-6">Swapnapurti Lawns</h3>
           
           <div className="w-10 h-px mb-6" style={{ background: 'rgba(209,0,86,0.25)' }} />
@@ -102,7 +102,7 @@ export default function Venue() {
           </address>
 
           <p className="font-sans text-xs uppercase tracking-widest text-[#008080] mb-8">
-            All Ceremonies
+            Main Ceremonies
           </p>
 
           <MapButton href="https://maps.app.goo.gl/xDXkPKzS7PEKkJ9y5" label="Open in Google Maps" />
