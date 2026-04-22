@@ -110,16 +110,16 @@ export default function BookingPage() {
       </section>
 
       {/* --- WHY CHOOSE US --- */}
-      <section className="py-20 md:py-28 px-6 bg-white/40 border-y border-[#008080]/5">
+      <section className="py-12 md:py-20 px-6 bg-white/40 border-y border-[#008080]/5">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            className="text-center mb-12 md:mb-20"
+            className="text-center mb-8 md:mb-16"
             variants={scrollReveal}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-[#D10056] text-3xl md:text-5xl tracking-widest uppercase mb-6 md:mb-8 font-bold">Why Choose Us</h2>
+            <h2 className="font-display text-[#D10056] text-3xl md:text-5xl tracking-widest uppercase mb-4 md:mb-6 font-bold">Why Choose Us</h2>
             <div className="w-20 md:w-32 h-1 bg-[#D10056]/30 mx-auto" />
           </motion.div>
 
@@ -147,17 +147,17 @@ export default function BookingPage() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section className="py-16 md:py-28 px-6 text-center">
+      <section className="py-10 md:py-20 px-6 text-center">
         <motion.div
-          className="max-w-3xl mx-auto space-y-12"
+          className="max-w-3xl mx-auto space-y-8"
           variants={scrollReveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          <div className="space-y-6">
-            <h2 className="font-display text-[#008080] text-2xl md:text-3xl tracking-widest uppercase font-bold">For urgent bookings or custom requests, <br /> contact us anytime.</h2>
-            <p className="font-serif italic text-ink-soft text-xl">Our team is available 24/7 to help you create your dream digital invite.</p>
+          <div className="space-y-4">
+            <h2 className="font-display text-[#008080] text-xl md:text-2xl tracking-widest uppercase font-bold">For urgent bookings or custom requests, <br /> contact us anytime.</h2>
+            <p className="font-serif italic text-ink-soft text-lg">Our team is available 24/7 to help you create your dream digital invite.</p>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-10">
