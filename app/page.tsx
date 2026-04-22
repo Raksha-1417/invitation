@@ -102,7 +102,7 @@ export default function Home() {
 
       <main
         id="main-content"
-        className="max-w-[430px] mx-auto min-h-screen bg-cream"
+        className="w-full md:max-w-2xl lg:max-w-3xl xl:max-w-[430px] mx-auto min-h-screen bg-cream shadow-2xl"
         style={{ visibility: envelopeOpen ? 'visible' : 'hidden' }}
       >
         <Hero />

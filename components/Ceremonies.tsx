@@ -122,7 +122,7 @@ function WeddingCard() {
       whileInView="show" 
       onViewportEnter={() => setParticlesActive(true)}
       viewport={{ once: true, amount: 0.1 }} 
-      className="rounded-lg overflow-hidden relative shadow-[0_8px_40px_rgba(209,0,86,0.2)] mt-8 scale-105 border border-[#D10056]/30 z-20 cursor-pointer"
+      className="rounded-lg overflow-hidden relative shadow-[0_8px_40px_rgba(209,0,86,0.2)] scale-105 border border-[#D10056]/30 z-20 cursor-pointer md:col-span-2 md:max-w-md md:mx-auto lg:max-w-lg"
     >
        {/* Background gradient */}
        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#D10056] to-[#7A1142]" />
@@ -201,7 +201,7 @@ export default function Ceremonies() {
         <p className="font-serif italic text-[#008080] text-sm mt-1 tracking-wider">पवित्र सोहळे</p>
       </motion.div>
 
-      <div className="flex flex-col gap-6 max-w-sm mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-sm md:max-w-none mx-auto items-start">
         <MehendiCard />
         <SangeetCard />
         <HaldiCard />

@@ -1,223 +1,195 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
-import { scrollReveal } from '@/lib/motion'
+import { motion } from 'framer-motion'
 
-// ─── PASTE YOUR BOOKING GOOGLE APPS SCRIPT WEB APP URL HERE ───────────────
 const BOOKING_SHEET_URL = process.env.NEXT_PUBLIC_BOOKING_SHEET_URL ?? ''
-// ───────────────────────────────────────────────────────────────────────────
 
 const EVENT_TYPES = [
-  'Wedding', 'Engagement', 'Reception', 'Birthday Party', 'Baby Shower',
-  'Naming Ceremony', 'Housewarming', 'Anniversary', 'Retirement Function',
-  'Farewell Party', 'Graduation Party', 'Corporate Event', 'Bridal Shower',
-  'Mehendi / Haldi / Sangeet', 'Custom Event'
+  'Wedding Invitation', 'Birthday Celebration', 'Anniversary Special', 
+  'Baby Shower', 'Corporate Event', 'Other'
 ]
 
 const THEME_STYLES = [
-  'Traditional', 'Royal', 'Floral', 'Minimal', 'Modern', 'Elegant',
-  'Luxury', 'Vintage', 'Kids Theme', 'Cartoon Theme'
+  'Royal Peshwai (Rani Pink)', 'Modern Minimalist (White/Gold)', 
+  'Vintage Floral (Pastels)', 'Night Galaxy (Dark Blue)'
 ]
 
 export default function BookingForm() {
-  const prefersReduced = useReducedMotion()
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
     if (!BOOKING_SHEET_URL) {
-      console.warn("No BOOKING_SHEET_URL provided. Form will simulate success.")
-      setLoading(true)
+      console.warn("No BOOKING_SHEET_URL provided. Simulating success.")
+      setStatus('loading')
       setTimeout(() => {
-        setLoading(false)
-        setSubmitted(true)
-      }, 1000)
+        setStatus('success')
+      }, 1500)
       return
     }
 
     const fd = new FormData(e.currentTarget)
     const body = JSON.stringify(Object.fromEntries(fd.entries()))
 
-    setLoading(true)
+    setStatus('loading')
     setError('')
+    
     try {
       await fetch(BOOKING_SHEET_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body,
       })
-      setSubmitted(true)
+      setStatus('success')
     } catch {
       setError('Something went wrong. Please try again or WhatsApp us directly.')
-    } finally {
-      setLoading(false)
+      setStatus('error')
     }
+  }
+
+  if (status === 'success') {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1 }}
+        className="max-w-4xl mx-auto bg-white/90 backdrop-blur-xl rounded-[2rem] md:rounded-[3rem] p-10 md:p-20 text-center shadow-2xl relative overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#D10056]/5 rounded-full blur-3xl -mr-32 -mt-32" />
+        <div className="relative z-10">
+          <div className="w-20 md:w-24 h-20 md:h-24 bg-[#D10056]/10 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8">
+            <svg className="w-10 md:w-12 h-10 md:h-12 text-[#D10056]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+          </div>
+          <h3 className="text-3xl md:text-5xl font-display text-[#D10056] mb-4 md:mb-6">Booking Successful!</h3>
+          <p className="text-base md:text-xl font-serif text-[#008080] leading-relaxed max-w-2xl mx-auto">
+            Thank you for choosing us! Our design team will contact you on WhatsApp within 24 hours to begin crafting your dream invitation.
+          </p>
+          <button 
+            onClick={() => setStatus('idle')} 
+            className="mt-10 md:mt-16 text-[#D10056] font-display text-[10px] md:text-xs tracking-[0.3em] uppercase underline hover:opacity-70 transition-opacity"
+          >
+            Place another booking
+          </button>
+        </div>
+      </motion.div>
+    )
   }
 
   return (
     <motion.div
-      className="max-w-2xl mx-auto relative z-10 p-6 md:p-10 rounded-2xl"
-      style={{
-        background: 'rgba(255, 255, 255, 0.65)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(209, 0, 86, 0.15)',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.4)'
-      }}
-      variants={scrollReveal}
-      initial={prefersReduced ? 'show' : 'hidden'}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="max-w-4xl mx-auto"
     >
-      {!submitted ? (
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Full Name */}
-            <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Full Name</label>
-              <input 
-                name="name"
-                type="text" 
+      <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#D10056]/5 rounded-full blur-3xl -mr-32 -mt-32" />
+        
+        <form onSubmit={handleSubmit} className="relative z-10 space-y-6 md:space-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            {/* Name */}
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Full Name</label>
+              <input
                 required
-                placeholder="Ex: Nandini & Rohit" 
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all shadow-md"
+                type="text"
+                name="name"
+                placeholder="Ex: Rohit & Nandini"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] placeholder-[#D10056]/30 focus:outline-none focus:border-[#D10056] transition-all"
               />
             </div>
 
             {/* Email */}
-            <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Email Address</label>
-              <input 
-                name="email"
-                type="email" 
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Email Address</label>
+              <input
                 required
-                placeholder="mail@example.com" 
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all shadow-md"
+                type="email"
+                name="email"
+                placeholder="mail@example.com"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] placeholder-[#D10056]/30 focus:outline-none focus:border-[#D10056] transition-all"
               />
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Phone */}
-            <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">WhatsApp Number</label>
-              <input 
-                name="phone"
-                type="tel" 
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">WhatsApp Number</label>
+              <input
                 required
-                placeholder="+91 00000 00000" 
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all shadow-md"
+                type="tel"
+                name="phone"
+                placeholder="+91 00000 00000"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] placeholder-[#D10056]/30 focus:outline-none focus:border-[#D10056] transition-all"
               />
             </div>
 
             {/* Event Type */}
-            <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Event Type</label>
-              <select 
-                name="event_type" 
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-bold text-[#D10056] focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all appearance-none cursor-pointer shadow-md"
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Event Type</label>
+              <select
+                name="event_type"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] focus:outline-none focus:border-[#D10056] appearance-none cursor-pointer"
               >
-                {EVENT_TYPES.map(type => <option key={type} value={type}>{type}</option>)}
+                {EVENT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             {/* Event Date */}
-             <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Event Date</label>
-              <input 
-                name="event_date"
-                type="date" 
+            {/* Event Date */}
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Event Date</label>
+              <input
                 required
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-bold text-[#D10056] focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all cursor-pointer shadow-md"
+                type="date"
+                name="event_date"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] focus:outline-none focus:border-[#D10056] transition-all"
               />
             </div>
 
             {/* Theme Style */}
-            <div className="space-y-3">
-              <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Preferred Theme</label>
-              <select 
-                name="theme_style" 
-                className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-bold text-[#D10056] focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all appearance-none cursor-pointer shadow-md"
+            <div className="space-y-2 md:space-y-3">
+              <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Preferred Theme</label>
+              <select
+                name="theme_style"
+                className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] focus:outline-none focus:border-[#D10056] appearance-none cursor-pointer"
               >
-                {THEME_STYLES.map(theme => <option key={theme} value={theme}>{theme}</option>)}
+                {THEME_STYLES.map(t => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
           </div>
 
-          {/* Location */}
-          <div className="space-y-3">
-            <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Event Location</label>
-            <input 
-              name="location"
-              type="text" 
-              placeholder="City, Venue Name" 
-              className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all shadow-md"
-            />
-          </div>
-
-          {/* Special Requirements */}
-          <div className="space-y-3">
-            <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Special Requirements</label>
-            <input 
+          {/* Requirements */}
+          <div className="space-y-2 md:space-y-3">
+            <label className="block text-xs md:text-sm font-display font-bold text-[#D10056] uppercase tracking-widest ml-1">Special Requirements</label>
+            <textarea
               name="requirements"
-              type="text" 
-              placeholder="Ex: Bilingual support, Music player, RSVP form" 
-              className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all shadow-md"
+              rows={3}
+              placeholder="Tell us about your dream invitation..."
+              className="w-full bg-[#F5EDE0]/50 border-2 border-[#D10056]/10 rounded-xl md:rounded-2xl px-5 md:px-8 py-3 md:py-5 text-sm md:text-lg font-serif text-[#D10056] placeholder-[#D10056]/30 focus:outline-none focus:border-[#D10056] resize-none transition-all"
             />
           </div>
 
-          {/* Notes */}
-          <div className="space-y-3 pt-2">
-            <label className="text-[14px] font-display font-bold tracking-[0.2em] text-[#008080] uppercase opacity-90">Additional Notes</label>
-            <textarea 
-              name="notes"
-              rows={4}
-              placeholder="Tell us more about your vision..." 
-              className="w-full bg-white/70 border-2 border-[#008080]/30 rounded-xl px-6 py-5 text-base md:text-lg font-medium text-[#D10056] placeholder-[#008080]/50 focus:outline-none focus:border-[#D10056] focus:ring-2 focus:ring-[#D10056]/20 transition-all resize-none shadow-md"
-            />
-          </div>
-
-          {error && <p className="text-[#D10056] text-base text-center font-bold">{error}</p>}
-          <button 
-            type="submit"
-            disabled={loading}
-            className="w-full mt-10 bg-gradient-to-r from-[#D10056] to-[#7A1142] text-white font-display font-bold tracking-[0.4em] uppercase text-base md:text-lg py-6 md:py-8 rounded-xl shadow-[0_20px_50px_rgba(209,0,86,0.4)] hover:shadow-[0_25px_60px_rgba(209,0,86,0.5)] transition-all active:scale-[0.98] disabled:opacity-60 border-2 border-white/30"
-          >
-            {loading ? 'Sending Request...' : 'Book My Invitation Website'}
-          </button>
-        </form>
-      ) : (
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }} 
-          animate={{ opacity: 1, scale: 1 }} 
-          className="text-center py-16 space-y-8"
-        >
-          <div className="w-20 h-20 rounded-full bg-[#D10056]/10 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-[#D10056]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div className="space-y-4">
-            <h3 className="font-display text-[28px] tracking-wide text-[#D10056]">Request Received</h3>
-            <p className="font-serif text-[#008080] text-base leading-relaxed px-6">
-              Thank you for choosing us! Our design team will contact you on WhatsApp within 24 hours to discuss your dream invitation.
+          <div className="pt-4 md:pt-8">
+            {error && <p className="text-center text-[#D10056] text-xs md:text-sm font-bold mb-4">{error}</p>}
+            
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full bg-[#D10056] text-white font-display font-black text-sm md:text-xl tracking-[0.3em] uppercase py-4 md:py-8 rounded-xl md:rounded-3xl shadow-[0_15px_40px_rgba(209,0,86,0.3)] hover:shadow-[0_20px_60px_rgba(209,0,86,0.4)] hover:-translate-y-1 transition-all active:scale-[0.98] disabled:opacity-70 group overflow-hidden relative"
+            >
+              <span className="relative z-10">
+                {status === 'loading' ? 'Processing...' : 'Book My Invitation Website'}
+              </span>
+              <div className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+            </button>
+            
+            <p className="text-center mt-4 md:mt-8 text-[10px] md:text-xs font-display text-[#008080] tracking-widest uppercase opacity-60">
+              No Credit Card Required • Instant Confirmation
             </p>
           </div>
-          <div className="w-16 h-px bg-[#D10056]/30 mx-auto" />
-          <button 
-            onClick={() => setSubmitted(false)}
-            className="text-xs font-display tracking-widest text-[#D10056] uppercase border-b border-[#D10056]/40 pb-1"
-          >
-            Back to booking form
-          </button>
-        </motion.div>
-      )}
+        </form>
+      </div>
     </motion.div>
   )
 }

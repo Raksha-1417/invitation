@@ -195,7 +195,7 @@ export default function RSVP() {
         <p className="font-display tracking-[0.2em] text-[#008080] text-xs uppercase mb-3">Questions?</p>
         
         <a 
-          href={`https://wa.me/${CONTACT_PHONE}`} 
+          href={`https://wa.me/${CONTACT_PHONE.replace(/\D/g, '')}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 mb-6 px-6 py-3 rounded-full border border-[#008080]/30 hover:border-[#D10056] hover:bg-[#D10056]/5 transition-colors group"

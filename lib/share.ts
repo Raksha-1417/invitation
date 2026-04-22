@@ -10,5 +10,5 @@ With love in our hearts and joy in every moment, we invite you to celebrate the 
 }
 
 export function getDesignerWhatsAppUrl(): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}`
+  return `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`
 }

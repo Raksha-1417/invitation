@@ -48,7 +48,7 @@ export default function BookingPage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl pt-16">
+        <div className="relative z-10 text-center px-4 max-w-4xl pt-10 md:pt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,34 +62,38 @@ export default function BookingPage() {
               Back to Invitation
             </Link>
 
-            <h1 className="font-display text-white text-[38px] md:text-[64px] leading-tight mb-6 tracking-tight drop-shadow-2xl">
-              Book Your Digital <br className="hidden md:block" /> Invitation Website
+            <h1 className="font-display text-white text-[30px] md:text-[48px] lg:text-[64px] leading-tight mb-3 md:mb-5 tracking-tight drop-shadow-2xl px-2">
+              Book Your Digital <br className="hidden lg:block" /> Invitation Website
             </h1>
 
-            <p className="font-serif italic text-white/95 text-xl md:text-2xl max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-xl">
+            <p className="font-serif italic text-white/95 text-base md:text-xl lg:text-2xl max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed drop-shadow-xl px-4">
               Beautiful digital invitation websites crafted for weddings, birthdays, baby showers, anniversaries, and every special celebration.
             </p>
 
-            {/* Rotating Captions with Shimmer Effect */}
-            <div className="h-28 flex items-center justify-center">
+           {/* Rotating Captions with High-Visibility Background */}
+            <div className="h-16 md:h-20 flex items-center justify-center">
               <AnimatePresence mode="wait">
-                <motion.p
+                <motion.div
                   key={captionIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="font-display font-bold text-base md:text-xl tracking-[0.3em] uppercase max-w-2xl mx-auto drop-shadow-[0_2px_20px_rgba(209,0,86,0.4)]"
-                  style={{
-                    background: 'linear-gradient(90deg, #D10056 0%, #F5EDE0 50%, #D10056 100%)',
-                    backgroundSize: '200% auto',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    animation: 'shimmer 3s linear infinite'
-                  }}
+                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -15 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="px-4 md:px-8 py-2 md:py-4 rounded-full bg-black/25 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.25)] mx-2"
                 >
-                  {PREMIUM_CAPTIONS[captionIndex]}
-                </motion.p>
+                  <p
+                    className="font-display font-black text-[10px] md:text-xl tracking-[0.2em] md:tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    style={{
+                      background: 'linear-gradient(90deg, #D10056 0%, #7A1142 50%, #D10056 100%)',
+                      backgroundSize: '200% auto',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      animation: 'shimmer 2.5s linear infinite'
+                    }}
+                  >
+                    {PREMIUM_CAPTIONS[captionIndex]}
+                  </p>
+                </motion.div>
               </AnimatePresence>
             </div>
           </motion.div>
@@ -101,25 +105,25 @@ export default function BookingPage() {
       </header>
 
       {/* --- BOOKING FORM SECTION --- */}
-      <section className="relative -mt-32 pb-32 px-4 z-20">
+      <section className="relative -mt-28 md:-mt-56 pb-16 md:pb-32 px-4 z-20">
         <BookingForm />
       </section>
 
       {/* --- WHY CHOOSE US --- */}
-      <section className="py-32 px-6 bg-white/40 border-y border-[#008080]/5">
+      <section className="py-20 md:py-28 px-6 bg-white/40 border-y border-[#008080]/5">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
             variants={scrollReveal}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-[#D10056] text-4xl tracking-widest uppercase mb-6">Why Choose Us</h2>
-            <div className="w-24 h-1 bg-[#D10056]/30 mx-auto" />
+            <h2 className="font-display text-[#D10056] text-3xl md:text-5xl tracking-widest uppercase mb-6 md:mb-8 font-bold">Why Choose Us</h2>
+            <div className="w-20 md:w-32 h-1 bg-[#D10056]/30 mx-auto" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             <FeatureCard
               title="Fully Custom Designs"
               desc="Every celebration is unique. We tailor colors, fonts, and layouts to match your specific event theme perfectly."
@@ -143,7 +147,7 @@ export default function BookingPage() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section className="py-32 px-6 text-center">
+      <section className="py-16 md:py-28 px-6 text-center">
         <motion.div
           className="max-w-3xl mx-auto space-y-12"
           variants={scrollReveal}
@@ -205,13 +209,15 @@ function FeatureCard({ title, desc, icon, delay }: { title: string; desc: string
       whileInView="show"
       viewport={{ once: true }}
       transition={{ delay }}
-      className="p-10 rounded-2xl bg-white shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-[#008080]/10 hover:border-[#D10056]/40 transition-all hover:shadow-2xl group"
+      className="p-6 md:p-8 rounded-2xl bg-white shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-[#008080]/10 hover:border-[#D10056]/40 transition-all hover:shadow-2xl flex items-center gap-6 group"
     >
-      <div className="w-20 h-20 rounded-2xl bg-[#D10056]/5 flex items-center justify-center text-[#D10056] mb-8 group-hover:bg-[#D10056] group-hover:text-white transition-all">
+      <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-xl bg-[#D10056]/5 flex items-center justify-center text-[#D10056] group-hover:bg-[#D10056] group-hover:text-white transition-all">
         {icon}
       </div>
-      <h3 className="font-display font-bold text-[#D10056] text-xl tracking-wide mb-4">{title}</h3>
-      <p className="font-serif font-medium text-[#008080] text-base leading-relaxed">{desc}</p>
+      <div className="text-left">
+        <h3 className="font-display font-bold text-[#D10056] text-base md:text-lg tracking-wide mb-1">{title}</h3>
+        <p className="font-serif font-medium text-[#008080] text-sm leading-snug">{desc}</p>
+      </div>
     </motion.div>
   )
 }
