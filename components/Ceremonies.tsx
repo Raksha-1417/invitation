@@ -93,6 +93,27 @@ function MehendiCard() {
   )
 }
 
+function SangeetCard() {
+  return (
+    <motion.article 
+      variants={cardReveal} 
+      initial="hidden" 
+      whileInView="show" 
+      viewport={{ once: true, amount: 0.1 }} 
+      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(122,17,66,0.15)] flex flex-col items-center mt-6 bg-[#FBF6EC] pb-4"
+    >
+      <Image 
+        src="/photos/sangeet.png" 
+        alt="Sangeet Ceremony Invitation" 
+        width={400} 
+        height={600} 
+        className="w-full h-auto object-cover" 
+      />
+      <p className="font-serif italic text-[#7A1142] text-sm mt-3">At Residence</p>
+    </motion.article>
+  )
+}
+
 function HaldiCard() {
   return (
     <motion.article 
@@ -163,27 +184,6 @@ function WeddingCard() {
          <p className="font-serif italic text-[#008080] text-sm font-medium">The sacred union under the mandap</p>
          <ViewLocationBtn bg="#D10056" href={NASHIK_MAP_LINK} />
        </div>
-    </motion.article>
-  )
-}
-
-function SangeetCard() {
-  return (
-    <motion.article 
-      variants={cardReveal} 
-      initial="hidden" 
-      whileInView="show" 
-      viewport={{ once: true, amount: 0.1 }} 
-      className="rounded-md overflow-hidden relative shadow-[0_8px_30px_rgba(122,17,66,0.15)] flex flex-col items-center mt-6 bg-[#FBF6EC] pb-4"
-    >
-      <Image 
-        src="/photos/sangeet.png" 
-        alt="Sangeet Ceremony Invitation" 
-        width={400} 
-        height={600} 
-        className="w-full h-auto object-cover" 
-      />
-      <p className="font-serif italic text-[#7A1142] text-sm mt-3">At Residence</p>
     </motion.article>
   )
 }

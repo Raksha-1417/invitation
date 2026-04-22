@@ -13,22 +13,21 @@ import Footer from '@/components/Footer'
 import Countdown from '@/components/Countdown'
 import FallingFlowers from '@/components/FallingFlowers'
 
-const Envelope = dynamic(() => import('@/components/Envelope'), { ssr: false })
-const MusicPlayer = dynamic(() => import('@/components/MusicPlayer'), { ssr: false })
+import Envelope from '@/components/Envelope'
+import MusicEngine from '@/components/MusicEngine'
+import MusicPlayer from '@/components/MusicPlayer'
 
 export default function Home() {
   const [envelopeOpen, setEnvelopeOpen] = useState(false)
-  const audioRef = useRef<HTMLAudioElement>(null)
+  const engineRef = useRef<any>(null)
   const [playing, setPlaying] = useState(false)
+
+  const handleStartMusic = () => {
+    engineRef.current?.play()
+  }
 
   const handleEnvelopeOpen = () => {
     setEnvelopeOpen(true)
-    // Attempt to play immediately when envelope opens
-    const audio = audioRef.current
-    if (audio && audio.paused) {
-      audio.currentTime = 58
-      audio.play().then(() => setPlaying(true)).catch(() => {})
-    }
     
     setTimeout(() => {
       const main = document.getElementById('main-content')
@@ -37,64 +36,23 @@ export default function Home() {
   }
 
   const toggleMusic = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    
-    if (playing) {
-      audio.pause()
-      setPlaying(false)
-    } else {
-      if (audio.currentTime === 0) {
-        audio.currentTime = 58
-      }
-      audio.play().catch(e => console.log("Manual play toggle failed:", e))
-      setPlaying(true)
-    }
+    engineRef.current?.toggle()
   }
-
-  // AGGRESSIVE AUTOPLAY: Attempts to play immediately + on any user interaction
-  useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
-
-    const tryPlay = () => {
-      if (!audio) return
-      
-      if (audio.paused) {
-        audio.currentTime = 58
-        audio.play().then(() => {
-          setPlaying(true)
-          cleanup()
-        }).catch(() => {
-          // Silent catch: Browser is still blocking autoplay
-        })
-      }
-    }
-
-    const cleanup = () => {
-      window.removeEventListener('click', tryPlay)
-      window.removeEventListener('touchstart', tryPlay)
-      window.removeEventListener('scroll', tryPlay)
-    }
-
-    tryPlay()
-    window.addEventListener('click', tryPlay)
-    window.addEventListener('touchstart', tryPlay)
-    window.addEventListener('scroll', tryPlay, { passive: true })
-    
-    return cleanup
-  }, [])
 
   return (
     <>
-      <audio 
-        ref={audioRef} 
-        loop
-        preload="auto" 
-        src="/music/wedding.mp3" 
+      <MusicEngine 
+        ref={engineRef}
+        envelopeOpen={envelopeOpen}
+        onStateChange={setPlaying}
       />
       
-      {!envelopeOpen && <Envelope onOpen={handleEnvelopeOpen} />}
+      {!envelopeOpen && (
+        <Envelope 
+          onStartMusic={handleStartMusic} 
+          onOpen={handleEnvelopeOpen} 
+        />
+      )}
       
       <MusicPlayer playing={playing} onToggle={toggleMusic} />
       

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 interface Props {
+  onStartMusic: () => void
   onOpen: () => void
 }
 
@@ -32,13 +33,15 @@ const SHIMMER_CSS = `
   .btn-pulse { animation: btnPulse 2.2s ease-in-out infinite; }
 `
 
-export default function Envelope({ onOpen }: Props) {
+export default function Envelope({ onStartMusic, onOpen }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
 
   const handleClick = () => {
     if (isOpen) return
     setIsOpen(true)
+    // Instant music trigger
+    onStartMusic()
     setTimeout(() => {
       setIsHidden(true)
       onOpen()

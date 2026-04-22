@@ -324,13 +324,17 @@ export default function Hero() {
         
         {/* Om Logo */}
         <motion.div variants={FADE(0)} initial={initial} animate="show" className="mb-4">
-          <Image 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Om_symbol.svg/250px-Om_symbol.svg.png"
-            alt="Om"
-            width={40} height={40}
-            className="opacity-90"
-            style={{ filter: 'invert(15%) sepia(82%) saturate(3828%) hue-rotate(320deg) brightness(88%) contrast(108%) drop-shadow(0 0 10px rgba(209,0,86,0.3))' }}
-          />
+          <div className="relative w-16 h-16 mb-4 mt-6 animate-pulse scale-110 drop-shadow-[0_0_15px_rgba(209,0,86,0.3)]">
+            <Image 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Om_symbol.svg/250px-Om_symbol.svg.png" 
+              alt="Om Symbol" 
+              fill 
+              className="object-contain" 
+              style={{ 
+                filter: 'invert(15%) sepia(82%) saturate(3828%) hue-rotate(320deg) brightness(88%) contrast(108%) drop-shadow(0 0 10px rgba(209,0,86,0.3))' 
+              }}
+            />
+          </div>
         </motion.div>
         
         {/* Top Text (TOGETHER WITH OUR FAMILIES) */}
