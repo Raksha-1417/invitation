@@ -96,7 +96,7 @@ export default function Countdown() {
       >
         {/* Marathi / subheading */}
         <p style={{ fontSize: 20, color: '#7A2F4E', fontFamily: 'serif', letterSpacing: '0.1em', marginBottom: 4 }}>
-          {isDone ? 'ಇಂದು ನಮ್ಮ ಸಪ್ತಪದಿ ಸಂಭ್ರಮ ✨' : 'ಸಪ್ತಪದಿ ಕಡೆಗೆ ನಮ್ಮ ಹೆಜ್ಜೆಗಳು…'}
+          {isDone ? 'ಇಂದು ನಮ್ಮ ಸಪ್ತಪದಿ ಸಂಭ್ರಮ ✨' : 'ಸಪ್ತಪದಿ ಕಡೆಗೆ ನಮ್ಮ ಹೆಜ್ಜೆಗಳು….'}
         </p>
         <p style={{ fontSize: 14, color: '#C9A46A', fontFamily: 'serif', fontStyle: 'italic', marginBottom: 32, letterSpacing: '0.06em' }}>
           {isDone ? "We take our sacred seven steps today 💛" : 'Steps toward our Saptapadi…'}
