@@ -123,6 +123,13 @@ export default function Hero() {
   const prefersReduced = useReducedMotion()
   const initial = prefersReduced ? 'show' : 'hidden'
   const [celebrateDate, setCelebrateDate] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handleReveal = () => {
     setCelebrateDate(true)
@@ -135,6 +142,57 @@ export default function Hero() {
       aria-label="Hero"
       style={{ background: 'linear-gradient(180deg, #FAF3EE 0%, #F5E8E2 60%, #EDD8D3 100%)' }}
     >
+      {/* ── Fixed scroll indicator ── */}
+      <motion.div
+        className="fixed bottom-24 left-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none"
+        style={{ translateX: '-50%' }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? 20 : 0 }}
+        transition={{ duration: 0.6, delay: scrolled ? 0 : 2 }}
+      >
+        {/* Pill container */}
+        <div style={{
+          background: 'linear-gradient(135deg, #7A2F4E 0%, #A8576A 100%)',
+          borderRadius: '999px',
+          padding: '6px 20px 6px',
+          boxShadow: '0 0 16px rgba(201,164,106,0.4), 0 3px 10px rgba(122,47,78,0.3)',
+          border: '1px solid rgba(201,164,106,0.6)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 4,
+        }}>
+          {/* Text */}
+          <motion.span
+            style={{
+              fontSize: 10,
+              color: '#FAF3EE',
+              fontFamily: 'serif',
+              fontStyle: 'italic',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
+            }}
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            Scroll Down
+          </motion.span>
+          {/* Arrows */}
+          <div className="flex flex-col items-center" style={{ gap: 1 }}>
+            {([0, 0.18, 0.36] as number[]).map((delay, i) => (
+              <motion.svg
+                key={i}
+                width="16" height="8" viewBox="0 0 20 11" fill="none"
+                animate={{ y: [0, 4, 0], opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 1.3, repeat: Infinity, ease: 'easeInOut', delay }}
+              >
+                <path d="M1 1L10 10L19 1" stroke="#C9A46A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </motion.svg>
+            ))}
+          </div>
+        </div>
+      </motion.div>
       {/* ── Floating pearls ── */}
       <FloatingPearls />
 
@@ -257,6 +315,7 @@ export default function Hero() {
             style={{ maxHeight: '180px', transform: 'scaleY(-1)', opacity: 0.9 }}
           />
         </div>
+
       </div>
     </section>
   )

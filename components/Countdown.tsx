@@ -125,14 +125,68 @@ export default function Countdown() {
           </motion.p>
         )}
 
-        {/* Date tag */}
-        <div className="flex items-center justify-center gap-3 mt-10">
-          <div style={{ height: 1, width: 50, background: 'rgba(201,164,106,0.5)' }} />
-          <span style={{ fontSize: 13, color: '#C9A46A', fontFamily: 'serif', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.8 }}>
-            14 May 2026 · Belagavi, Karnataka
-          </span>
-          <div style={{ height: 1, width: 50, background: 'rgba(201,164,106,0.5)' }} />
-        </div>
+        {/* Date + Venue card */}
+        <motion.div
+          className="mt-10 flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          {/* Date line */}
+          <div className="flex items-center gap-3">
+            <div style={{ height: 1, width: 40, background: 'linear-gradient(to right, transparent, #C9A46A)' }} />
+            <span
+              className="gold-text-shimmer font-display font-semibold"
+              style={{ fontSize: 16, letterSpacing: '0.18em', textTransform: 'uppercase' }}
+            >
+              14 May 2026
+            </span>
+            <div style={{ height: 1, width: 40, background: 'linear-gradient(to left, transparent, #C9A46A)' }} />
+          </div>
+          {/* Venue pill */}
+          <div style={{
+            background: 'linear-gradient(135deg, #7A2F4E 0%, #A8576A 100%)',
+            borderRadius: '999px',
+            padding: '4px 18px',
+            border: '1px solid rgba(201,164,106,0.5)',
+            boxShadow: '0 2px 12px rgba(122,47,78,0.25)',
+          }}>
+            <span style={{
+              fontSize: 10,
+              color: '#FAF3EE',
+              fontFamily: 'serif',
+              fontStyle: 'italic',
+              letterSpacing: '0.18em',
+              whiteSpace: 'nowrap',
+            }}>
+              📍 Vaibhav Hall, Belagavi, Karnataka
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Muhurtham timing */}
+        <motion.div
+          className="mt-6 flex flex-col items-center gap-1"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+        >
+          <div className="flex items-center gap-3">
+            <div style={{ height: 1, width: 30, background: 'rgba(122,47,78,0.3)' }} />
+            <span style={{ fontSize: 10, color: '#A8576A', fontFamily: 'sans-serif', letterSpacing: '0.25em', textTransform: 'uppercase', opacity: 0.8 }}>Muhurtham</span>
+            <div style={{ height: 1, width: 30, background: 'rgba(122,47,78,0.3)' }} />
+          </div>
+          <p
+            className="gold-text-shimmer font-display font-bold"
+            style={{ fontSize: 28, letterSpacing: '0.1em' }}
+          >
+            12:32 PM
+          </p>
+
+        </motion.div>
+
       </motion.div>
     </section>
   )

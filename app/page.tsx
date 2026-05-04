@@ -6,7 +6,6 @@ import Hero from '@/components/Hero'
 import Story from '@/components/Story'
 import Ceremonies from '@/components/Ceremonies'
 import Venue from '@/components/Venue'
-import Schedule from '@/components/Schedule'
 import Blessings from '@/components/Blessings'
 import Footer from '@/components/Footer'
 import Countdown from '@/components/Countdown'
@@ -72,8 +71,6 @@ export default function Home() {
         <Story />
         <SectionDivider />
         <Ceremonies />
-        <SectionDivider />
-        <Schedule />
         <SectionDivider />
         <Venue />
                 <SectionDivider />
