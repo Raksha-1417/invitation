@@ -26,7 +26,7 @@ export default function Divider({ className, width = 200 }: Props) {
         fill="currentColor"
         opacity="0.7"
       />
-      <circle cx={width / 2} cy="12" r="2.5" fill="#D10056" opacity="1" />
+      <circle cx={width / 2} cy="12" r="2.5" fill="#7A2F4E" opacity="1" />
       {/* Right small diamond */}
       <polygon
         points={`${width / 2 + 10},12 ${width / 2 + 14},9 ${width / 2 + 18},12 ${width / 2 + 14},15`}

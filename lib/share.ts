@@ -1,11 +1,16 @@
-const DEPLOY_URL = 'https://rohit-nandini.vercel.app'
-export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/xDXkPKzS7PEKkJ9y5'
-export const WHATSAPP_NUMBER = '+91 8796119608'
+const DEPLOY_URL = 'https://naveen-shreya.vercel.app'
+export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/jxqQPP7D2MW8DiaQ9'
+export const WHATSAPP_NUMBER = '+91 9741624840'
 
 export function getWhatsAppShareUrl(): string {
-  const message = `Rohit & Nandini are getting married! ❤️
+  const message = `Naveen & Shreya ❤️
 
-With love in our hearts and joy in every moment, we invite you to celebrate the beginning of our forever together.${DEPLOY_URL}`
+It started with a “yes”…
+and grew into something beautiful.
+
+Join us as we begin our forever ✨
+
+View wedding details: ${DEPLOY_URL}`
   return `https://wa.me/?text=${encodeURIComponent(message)}`
 }
 

@@ -7,7 +7,6 @@ import Story from '@/components/Story'
 import Ceremonies from '@/components/Ceremonies'
 import Venue from '@/components/Venue'
 import Schedule from '@/components/Schedule'
-import RSVP from '@/components/RSVP'
 import Blessings from '@/components/Blessings'
 import Footer from '@/components/Footer'
 import Countdown from '@/components/Countdown'
@@ -60,8 +59,11 @@ export default function Home() {
 
       <main
         id="main-content"
-        className="max-w-[430px] mx-auto min-h-screen bg-cream shadow-2xl"
-        style={{ visibility: envelopeOpen ? 'visible' : 'hidden' }}
+        className="max-w-[430px] mx-auto min-h-screen shadow-2xl"
+        style={{ 
+          visibility: envelopeOpen ? 'visible' : 'hidden',
+          background: 'linear-gradient(180deg, #FAF3EE 0%, #F5E8E2 50%, #FAF3EE 100%)'
+        }}
       >
         <Hero />
         <SectionDivider />
@@ -74,9 +76,7 @@ export default function Home() {
         <Schedule />
         <SectionDivider />
         <Venue />
-        <SectionDivider />
-        <RSVP />
-        <SectionDivider />
+                <SectionDivider />
         <Blessings />
         <Footer />
       </main>
@@ -86,26 +86,12 @@ export default function Home() {
 
 function SectionDivider() {
   return (
-    <div className="flex items-center justify-center py-2 px-7">
-      <div className="flex-1 h-px bg-[#008080]/30" />
-      <svg
-        viewBox="0 0 24 24"
-        className="w-5 h-5 mx-3 text-[#D10056]"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z" />
-      </svg>
-      <div className="w-1.5 h-1.5 rounded-full bg-[#008080] mx-1" />
-      <svg
-        viewBox="0 0 24 24"
-        className="w-5 h-5 mx-3 text-[#D10056] rotate-180"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z" />
-      </svg>
-      <div className="flex-1 h-px bg-[#008080]/30" />
+    <div className="section-divider-floral py-2 px-4">
+      <div className="flex items-center gap-3 w-full">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C88A8F] to-transparent opacity-50" />
+        <span className="text-[#C9A46A] text-base select-none">✦</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#C88A8F] to-transparent opacity-50" />
+      </div>
     </div>
   )
 }

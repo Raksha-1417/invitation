@@ -13,23 +13,28 @@ const SHIMMER_CSS = `
     100% { background-position: 200% center; }
   }
   @keyframes ivoryGlow {
-    0%, 100% { box-shadow: 0 0 8px 3px rgba(245,237,224,0.25); }
-    50%       { box-shadow: 0 0 35px 12px rgba(245,237,224,0.85), 0 0 70px 25px rgba(245,237,224,0.2); }
+    0%, 100% { box-shadow: 0 0 8px 3px rgba(201,164,106,0.25); }
+    50%       { box-shadow: 0 0 35px 12px rgba(201,164,106,0.55), 0 0 70px 25px rgba(201,164,106,0.15); }
   }
   @keyframes cardGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(245,237,224,0.1), inset 0 0 30px rgba(0,0,0,0.3); }
-    50%       { box-shadow: 0 0 50px rgba(245,237,224,0.4), 0 0 100px rgba(245,237,224,0.1), inset 0 0 30px rgba(0,0,0,0.2); }
+    0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 0 30px rgba(0,0,0,0.1); }
+    50%       { box-shadow: 0 10px 40px rgba(201,164,106,0.25), inset 0 0 30px rgba(0,0,0,0.05); }
   }
   @keyframes btnPulse {
-    0%, 100% { box-shadow: 0 0 15px rgba(0,128,128,0.4); }
-    50%       { box-shadow: 0 0 40px rgba(0,128,128,0.9), 0 0 70px rgba(0,128,128,0.3); }
+    0%, 100% { box-shadow: 0 0 15px rgba(122,47,78,0.4); }
+    50%       { box-shadow: 0 0 40px rgba(122,47,78,0.8), 0 0 70px rgba(122,47,78,0.3); }
+  }
+  @keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
   }
   .ivory-hem {
-    background: linear-gradient(90deg, #D4C5AF 0%, #FFFDF5 30%, #F5EDE0 50%, #FFFDF5 70%, #D4C5AF 100%);
+    background: linear-gradient(90deg, #C9A46A 0%, #F5E8E2 30%, #FAF3EE 50%, #F5E8E2 70%, #C9A46A 100%);
     background-size: 200% 100%;
     animation: shimmerSweep 2s linear infinite, ivoryGlow 2.8s ease-in-out infinite;
+    opacity: 0.55;
+    filter: blur(8px);
   }
-  .card-glow { animation: cardGlow 3s ease-in-out infinite; }
   .btn-pulse { animation: btnPulse 2.2s ease-in-out infinite; }
 `
 
@@ -56,78 +61,109 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
 
       {/* Left Curtain */}
       <div
-        className="w-1/2 h-full relative z-[100]"
+        className="w-1/2 h-full relative z-[100] overflow-hidden"
         style={{
-          backgroundColor: '#D10056',
-          backgroundImage: 'repeating-linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(209,0,86,0.2) 15%, rgba(255,255,255,0.06) 25%, rgba(209,0,86,0.2) 35%, rgba(0,0,0,0.45) 50%)',
-          boxShadow: 'inset 0 0 100px rgba(0,0,0,0.75)',
+          backgroundColor: '#8B3A4A',
+          backgroundImage: 'repeating-linear-gradient(90deg, rgba(60,15,25,0.4) 0%, rgba(139,58,74,0.3) 15%, rgba(255,245,240,0.1) 25%, rgba(139,58,74,0.3) 35%, rgba(60,15,25,0.4) 50%)',
+          boxShadow: 'inset 0 0 100px rgba(60,15,25,0.6)',
           transition: 'transform 2.5s cubic-bezier(0.19, 1, 0.22, 1)',
           transform: isOpen ? 'translateX(-100%) skewX(10deg) scaleX(0.9)' : 'translateX(0)',
           willChange: 'transform'
         }}
       >
+        <div className="absolute inset-0 bg-[rgba(255,255,255,0.05)] z-0 pointer-events-none" />
+        
+        {/* Content Half - Perfectly centered on screen, clipped at 50% */}
+        <div className="absolute top-0 left-0 w-[200%] h-full flex flex-col items-center justify-center pointer-events-none">
+          <div className="absolute top-0 left-0 w-full flex flex-col items-center" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img 
+              src="/elements/3image.png" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] mix-blend-multiply drop-shadow-xl" 
+            />
+          </div>
+          <div className="flex flex-col items-center mt-8 md:mt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain mix-blend-multiply drop-shadow-2xl" />
+          </div>
+        </div>
+
         {/* Shimmer Ivory Hem - right edge */}
         <div
-          className="ivory-hem absolute right-0 top-0 bottom-0 w-4 md:w-6"
+          className="ivory-hem absolute right-0 top-0 bottom-0 w-3 md:w-4"
           style={{ borderLeft: '1px solid rgba(255,255,255,0.4)', borderRight: '1px solid rgba(255,255,255,0.4)' }}
         />
       </div>
 
       {/* Right Curtain */}
       <div
-        className="w-1/2 h-full relative z-[100]"
+        className="w-1/2 h-full relative z-[100] overflow-hidden"
         style={{
-          backgroundColor: '#D10056',
-          backgroundImage: 'repeating-linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(209,0,86,0.2) 15%, rgba(255,255,255,0.06) 25%, rgba(209,0,86,0.2) 35%, rgba(0,0,0,0.45) 50%)',
-          boxShadow: 'inset 0 0 100px rgba(0,0,0,0.75)',
+          backgroundColor: '#8B3A4A',
+          backgroundImage: 'repeating-linear-gradient(90deg, rgba(60,15,25,0.4) 0%, rgba(139,58,74,0.3) 15%, rgba(255,245,240,0.1) 25%, rgba(139,58,74,0.3) 35%, rgba(60,15,25,0.4) 50%)',
+          boxShadow: 'inset 0 0 100px rgba(60,15,25,0.6)',
           transition: 'transform 2.5s cubic-bezier(0.19, 1, 0.22, 1)',
           transform: isOpen ? 'translateX(100%) skewX(-10deg) scaleX(0.9)' : 'translateX(0)',
           willChange: 'transform'
         }}
       >
+        <div className="absolute inset-0 bg-[rgba(255,255,255,0.05)] z-0 pointer-events-none" />
+
+        {/* Content Half - Perfectly centered on screen, clipped at 50% */}
+        <div className="absolute top-0 -left-full w-[200%] h-full flex flex-col items-center justify-center pointer-events-none">
+          <div className="absolute top-0 left-0 w-full flex flex-col items-center" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img 
+              src="/elements/3image.png" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] mix-blend-multiply drop-shadow-xl" 
+            />
+          </div>
+          <div className="flex flex-col items-center mt-8 md:mt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain mix-blend-multiply drop-shadow-2xl" />
+          </div>
+        </div>
+
         {/* Shimmer Ivory Hem - left edge */}
         <div
-          className="ivory-hem absolute left-0 top-0 bottom-0 w-4 md:w-6"
+          className="ivory-hem absolute left-0 top-0 bottom-0 w-3 md:w-4"
           style={{ borderLeft: '1px solid rgba(255,255,255,0.4)', borderRight: '1px solid rgba(255,255,255,0.4)' }}
         />
       </div>
 
-      {/* Center Content */}
+      {/* Center Content (Interactive layer over curtains) */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center z-[101] text-center px-6 transition-all duration-700"
-        style={{ opacity: isOpen ? 0 : 1, transform: isOpen ? 'scale(0.9)' : 'scale(1)', pointerEvents: isOpen ? 'none' : 'auto' }}
+        className="absolute inset-0 flex flex-col items-center justify-center z-[101] text-center px-6 transition-all duration-1000 pointer-events-none"
+        style={{ 
+          opacity: isOpen ? 0 : 1, 
+          transform: isOpen ? 'scale(0.9)' : 'scale(1)'
+        }}
       >
-        <div
-          className="card-glow relative p-8 md:p-12 bg-black/45 backdrop-blur-md rounded-xl"
-          style={{ border: '3px solid rgba(245,237,224,0.5)' }}
-        >
-          <h2 className="font-script text-[#F5EDE0] text-4xl md:text-5xl mb-4">You Are Invited</h2>
-          <h1
-            className="font-script mb-8"
-            style={{
-              fontSize: 'clamp(44px, 12vw, 72px)',
-              color: '#F5EDE0',
-              letterSpacing: '0.04em',
-              lineHeight: 1.1,
-              textShadow: '0 2px 20px rgba(245,237,224,0.4), 0 0 40px rgba(0,128,128,0.5)',
-            }}
+        <div className="relative flex flex-col items-center w-full">
+          {/* Transparent placeholder that exactly matches the logo so the button flows correctly! */}
+          <div className="flex flex-col items-center pointer-events-none opacity-0 mt-8 md:mt-12">
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain" aria-hidden="true" />
+          </div>
+
+          <div 
+            className="absolute top-full left-0 w-full flex flex-col items-center pt-8"
+            style={{ animation: 'fadeInScale 1.5s ease-in-out forwards', animationDelay: '0.2s', opacity: 0 }}
           >
-            Rohit & Nandini
-          </h1>
-          <button
-            onClick={handleClick}
-            className="btn-pulse group relative px-10 py-5 bg-[#008080] text-[#F5EDE0] font-serif text-xl md:text-2xl tracking-widest uppercase overflow-hidden rounded-sm transition-all duration-300 hover:bg-[#006868]"
-            style={{ border: '2px solid rgba(245,237,224,0.5)' }}
-          >
-            <span className="relative z-10 drop-shadow-md group-hover:text-white transition-colors">
-              Open Invitation
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#005f5f] to-[#009999] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out z-0" />
-          </button>
+            <button
+              onClick={handleClick}
+              className="pointer-events-auto btn-pulse group relative px-14 py-5 font-sans font-semibold text-base md:text-xl tracking-widest uppercase overflow-hidden rounded-full transition-colors duration-300 shadow-2xl hover:bg-[#5E233B]"
+              style={{ 
+                backgroundColor: '#7A2F4E', 
+                color: '#FFFFFF', 
+                border: '1px solid rgba(255,255,255,0.2)' 
+              }}
+            >
+              <span className="relative z-10 drop-shadow-sm group-hover:scale-105 transition-transform duration-300 block">
+                Open Invitation
+              </span>
+            </button>
+            
+            <p className="mt-8 text-xs md:text-sm text-[#F5E8E2] italic opacity-90 animate-pulse font-sans tracking-widest drop-shadow-md">
+              ✦ Tap to begin the celebration ✦
+            </p>
+          </div>
         </div>
-        <p className="mt-8 text-sm text-[#F5EDE0] italic opacity-75 animate-pulse font-sans tracking-widest">
-          Tap to begin the celebration
-        </p>
       </div>
     </div>
   )

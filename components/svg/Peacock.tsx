@@ -26,12 +26,12 @@ export default function Peacock({ className }: Props) {
       <path d="M40 48 Q58 35 70 20 Q64 32 52 42 Q45 46 40 48" opacity="0.5" />
       <path d="M40 48 Q60 42 66 30 Q60 40 48 46 Q44 47 40 48" opacity="0.4" />
       {/* Tail eye spots */}
-      <circle cx="15" cy="22" r="3" fill="#D10056" opacity="0.3" />
-      <circle cx="15" cy="22" r="1.5" fill="#D10056" opacity="0.9" />
-      <circle cx="65" cy="22" r="3" fill="#D10056" opacity="0.3" />
-      <circle cx="65" cy="22" r="1.5" fill="#D10056" opacity="0.9" />
-      <circle cx="25" cy="35" r="2.5" fill="#D10056" opacity="0.4" />
-      <circle cx="55" cy="35" r="2.5" fill="#D10056" opacity="0.4" />
+      <circle cx="15" cy="22" r="3" fill="#7A2F4E" opacity="0.3" />
+      <circle cx="15" cy="22" r="1.5" fill="#7A2F4E" opacity="0.9" />
+      <circle cx="65" cy="22" r="3" fill="#7A2F4E" opacity="0.3" />
+      <circle cx="65" cy="22" r="1.5" fill="#7A2F4E" opacity="0.9" />
+      <circle cx="25" cy="35" r="2.5" fill="#7A2F4E" opacity="0.4" />
+      <circle cx="55" cy="35" r="2.5" fill="#7A2F4E" opacity="0.4" />
       {/* Legs */}
       <path d="M37 64 L35 74 M43 64 L45 74" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.6" />
     </svg>

@@ -80,7 +80,7 @@ export default function ActionButtons() {
           onClick={() => handleClick(btn.action)}
           className="border border-gold bg-transparent text-maroon font-display uppercase text-xs tracking-wider px-4 py-3 rounded-sm min-w-[90px] transition-colors focus-visible:outline-2 focus-visible:outline-rani focus-visible:outline-offset-2 relative overflow-hidden"
           whileHover={
-            prefersReduced ? {} : { backgroundColor: '#C8964A', color: '#FBF6EC', scale: 1.03 }
+            prefersReduced ? {} : { backgroundColor: '#7A2F4E', color: '#F5E8E2', scale: 1.03 }
           }
           whileTap={prefersReduced ? {} : { scale: 0.96 }}
         >

@@ -48,21 +48,21 @@ const scheduleEvents = [
     title: "Breakfast",
     desc: "A warm start to the big day",
     icon: BreakfastIcon,
-    theme: "text-[#008080]"
+    theme: "text-[#C9A46A]"
   },
   {
     time: "12:30 PM",
     title: "Lunch Feast",
-    desc: "Traditional Maharashtrian Pangat",
+    desc: "Kalyana Oota – Traditional Wedding Feast",
     icon: LunchIcon,
-    theme: "text-[#D10056]"
+    theme: "text-[#7A2F4E]"
   },
   {
-    time: "12:43 PM",
-    title: "Vivah Muhurat",
+    time: "12:32 PM",
+    title: "Muhurtham",
     desc: "The auspicious moment we say 'I Do'",
     icon: VivahIcon,
-    theme: "text-[#008080]"
+    theme: "text-[#C9A46A]"
   }
 ]
 
@@ -70,7 +70,7 @@ export default function Schedule() {
   const prefersReduced = useReducedMotion()
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden bg-[#FBF6EC]">
+    <section className="py-20 px-6 relative overflow-hidden bg-[#F5E8E2]">
 
       {/* Title */}
       <motion.div
@@ -80,38 +80,43 @@ export default function Schedule() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <p className="font-devanagari text-[#008080] text-lg tracking-wider mb-2">लग्नपत्रिका</p>
-        <h2 className="font-script text-[#D10056] text-[50px] leading-tight drop-shadow-sm">Wedding Day <br/> Schedule</h2>
-        <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#008080] to-transparent mx-auto mt-4 mb-2" />
-        <p className="font-display tracking-[0.2em] text-ink-soft text-sm">SUNDAY, 26 APRIL 2026</p>
+        <p className="font-devanagari gold-text-shimmer text-lg tracking-wider mb-2 font-semibold">ಮದುವೆ ಆಮಂತ್ರಣ</p>
+        <h2 className="font-script text-[#7A2F4E] text-[50px] leading-tight drop-shadow-sm">Wedding Day <br /> Schedule</h2>
+        <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#C9A46A] to-transparent mx-auto mt-4 mb-2 pulse-ring rounded-full" />
+        <p className="font-display tracking-[0.2em] text-[#A8576A] text-sm uppercase">Thursday, 14 May 2026</p>
       </motion.div>
 
       <div className="max-w-sm mx-auto relative z-10 pl-6">
         {/* Timeline Line */}
-        <div className="absolute left-[38px] top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-[#008080] to-transparent opacity-60" />
+        <div className="absolute left-[38px] top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-[#C9A46A] to-transparent opacity-60" />
 
         <div className="space-y-12">
           {scheduleEvents.map((event, i) => {
             const Icon = event.icon
             return (
-              <motion.div 
+              <motion.div
                 key={event.title}
                 className="relative flex items-start gap-8 group"
-                initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                whileInView={prefersReduced ? {} : { opacity: 1, y: 0 }}
+                initial={prefersReduced ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+                whileInView={prefersReduced ? {} : { opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
+                transition={{ duration: 0.7, delay: i * 0.25, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Icon node */}
-                <div className="relative z-10 w-14 h-14 rounded-full bg-[#F5EDE0] border border-[#008080]/30 flex items-center justify-center flex-shrink-0 shadow-[0_4px_12px_rgba(0,128,128,0.15)] group-hover:bg-[#008080]/10 transition-colors">
+                <motion.div
+                  className={`relative z-10 w-14 h-14 rounded-full bg-[#FAF3EE] border-2 flex items-center justify-center flex-shrink-0 shadow-[0_4px_16px_rgba(201,164,106,0.2)] cursor-default`}
+                  style={{ borderColor: i % 2 === 0 ? 'rgba(201,164,106,0.5)' : 'rgba(122,47,78,0.35)' }}
+                  whileHover={{ scale: 1.18, rotate: 8 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                >
                   <Icon className={`w-6 h-6 ${event.theme}`} />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <div className="pt-2">
-                  <p className={`font-display text-sm tracking-[0.1em] font-semibold mb-1 ${event.theme}`}>{event.time}</p>
-                  <h3 className="font-serif text-2xl text-ink leading-tight">{event.title}</h3>
-                  <p className="font-serif italic text-ink-soft text-sm mt-1">{event.desc}</p>
+                  <p className={`font-display text-sm tracking-[0.1em] font-bold mb-1 ${event.theme}`}>{event.time}</p>
+                  <h3 className="font-serif text-2xl text-[#3a1a20] leading-tight font-semibold">{event.title}</h3>
+                  <p className="font-serif italic text-[#A8576A]/80 text-sm mt-1">{event.desc}</p>
                 </div>
               </motion.div>
             )

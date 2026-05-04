@@ -1,4 +1,4 @@
-# Rohit & Nandini — Wedding Invitation Website
+# Naveen & Shreya — Wedding Invitation Website
 ## The Idea
 
 ---
@@ -71,7 +71,7 @@ Your original had 11 sections. That's a website. This needs to feel like an invi
 - Tiny Marathi header: **शुभ विवाह** in gold
 - Decorative gold divider (paisley-style)
 - *"Together with the blessings of their families"*
-- **Rohit & Nandini** — large, centered, Cinzel
+- **Naveen & Shreya** — large, centered, Cinzel
 - Ornament below
 - Wedding date: **26 . 04 . 2026**
 - Small Marathi date line
@@ -89,14 +89,14 @@ Alternating left-right layout, gold vertical line connecting them, photos in sof
 Three clean cards, stacked vertically (mobile-first):
 - **Mehendi** — 23rd April 2026 — henna hand icon
 - **Haldi** — 25th April 2026 — turmeric bowl icon
-- **Vivah (Wedding)** — 26th April 2026, 12:43 PM — mandap icon
+- **Vivah (Wedding)** — 14th May 2026, 12:32 PM — mandap icon
 
 Each card: gold border, event name in Cinzel, date + time, one line of Marathi below.
 
 ### Section 5 — Venue
 - Venue name: **Swapnapurti Lawns**
 - Full address in warm ink
-- Landmark line: *Opp Shell Petrol Pump, Near Mirchi Hotel, Nandur Naka, Nashik*
+- Landmark line: *Opp Shell Petrol Pump, Near Mirchi Hotel, Nandur Naka, Belagavi*
 - **Gold "Get Directions" button** → opens your Maps link in Google Maps app directly
 - A small decorative venue illustration (optional, hand-drawn feel)
 
@@ -112,7 +112,7 @@ This replaces the whole "Blessings Wall + RSVP form + Message Wall" from your or
 ### Section 7 — Footer (where you get orders)
 - Monogram **R & N** in gold script
 - Thin gold divider
-- *"With love, Rohit & Nandini"*
+- *"With love, Naveen & Shreya"*
 - Small separator
 - **"Designed by [Your Brand] · Book your invitation →"** linked to your WhatsApp
 - Three action buttons:
@@ -182,7 +182,7 @@ Everything else is still. Static. Like a real invitation card.
 ## 9. What you still need to send me
 
 Before or after I build, replace the placeholders:
-1. Your brand name (e.g., "Nashik Invites" or your personal name)
+1. Your brand name (e.g., "Belagavi Invites" or your personal name)
 2. Your WhatsApp number
 3. The couple's photos (3 photos for timeline + any hero accent)
 4. Optional: Marathi shloka preference, or I'll pick a classic wedding blessing

@@ -32,7 +32,7 @@ export default function BookingPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#F5EDE0] selection:bg-[#D10056]/20">
+    <div className="min-h-screen bg-[#F5EDE0] selection:bg-[#7A2F4E]/20">
       {/* --- HERO SECTION --- */}
       <header className="relative h-[85vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with Dark Overlay */}
@@ -84,7 +84,7 @@ export default function BookingPage() {
                   <p
                     className="font-display font-black text-[10px] md:text-xl tracking-[0.2em] md:tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                     style={{
-                      background: 'linear-gradient(90deg, #D10056 0%, #7A1142 50%, #D10056 100%)',
+                      background: 'linear-gradient(90deg, #7A2F4E 0%, #8B3A4A 50%, #7A2F4E 100%)',
                       backgroundSize: '200% auto',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
@@ -100,8 +100,8 @@ export default function BookingPage() {
         </div>
 
         {/* Decorative Floating Shapes */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-[#D10056]/20 rounded-full blur-[60px] animate-pulse" />
-        <div className="absolute bottom-40 right-10 w-48 h-48 bg-[#008080]/10 rounded-full blur-[80px] animate-pulse delay-700" />
+        <div className="absolute top-20 left-10 w-32 h-32 bg-[#7A2F4E]/20 rounded-full blur-[60px] animate-pulse" />
+        <div className="absolute bottom-40 right-10 w-48 h-48 bg-[#C9A46A]/10 rounded-full blur-[80px] animate-pulse delay-700" />
       </header>
 
       {/* --- BOOKING FORM SECTION --- */}
@@ -110,7 +110,7 @@ export default function BookingPage() {
       </section>
 
       {/* --- WHY CHOOSE US --- */}
-      <section className="py-12 md:py-20 px-6 bg-white/40 border-y border-[#008080]/5">
+      <section className="py-12 md:py-20 px-6 bg-white/40 border-y border-[#C9A46A]/5">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-8 md:mb-16"
@@ -119,8 +119,8 @@ export default function BookingPage() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-[#D10056] text-3xl md:text-5xl tracking-widest uppercase mb-4 md:mb-6 font-bold">Why Choose Us</h2>
-            <div className="w-20 md:w-32 h-1 bg-[#D10056]/30 mx-auto" />
+            <h2 className="font-display text-[#7A2F4E] text-3xl md:text-5xl tracking-widest uppercase mb-4 md:mb-6 font-bold">Why Choose Us</h2>
+            <div className="w-20 md:w-32 h-1 bg-[#7A2F4E]/30 mx-auto" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
@@ -156,7 +156,7 @@ export default function BookingPage() {
           viewport={{ once: true }}
         >
           <div className="space-y-4">
-            <h2 className="font-display text-[#008080] text-xl md:text-2xl tracking-widest uppercase font-bold">For urgent bookings or custom requests, <br /> contact us anytime.</h2>
+            <h2 className="font-display text-[#C9A46A] text-xl md:text-2xl tracking-widest uppercase font-bold">For urgent bookings or custom requests, <br /> contact us anytime.</h2>
             <p className="font-serif italic text-ink-soft text-lg">Our team is available 24/7 to help you create your dream digital invite.</p>
           </div>
 
@@ -173,7 +173,7 @@ export default function BookingPage() {
               </div>
               <div className="text-left">
                 <p className="text-[12px] font-display font-bold text-ink-soft tracking-widest uppercase">WhatsApp</p>
-                <p className="font-display font-medium text-[#008080] text-lg">{WHATSAPP_NUMBER}</p>
+                <p className="font-display font-medium text-[#C9A46A] text-lg">{WHATSAPP_NUMBER}</p>
               </div>
             </a>
           </div>
@@ -181,10 +181,10 @@ export default function BookingPage() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="py-20 bg-[#FBF6EC] border-t border-[#008080]/10 overflow-hidden relative">
+      <footer className="py-20 bg-[#FBF6EC] border-t border-[#C9A46A]/10 overflow-hidden relative">
         <div className="absolute inset-0 opacity-40 blur-3xl pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-48 bg-[#D10056]/20 rounded-full" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-48 bg-[#008080]/10 rounded-full" />
+          <div className="absolute top-0 left-1/4 w-96 h-48 bg-[#7A2F4E]/20 rounded-full" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-48 bg-[#C9A46A]/10 rounded-full" />
         </div>
 
         <div className="max-w-5xl mx-auto text-center relative z-10 px-6">
@@ -209,14 +209,14 @@ function FeatureCard({ title, desc, icon, delay }: { title: string; desc: string
       whileInView="show"
       viewport={{ once: true }}
       transition={{ delay }}
-      className="p-6 md:p-8 rounded-2xl bg-white shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-[#008080]/10 hover:border-[#D10056]/40 transition-all hover:shadow-2xl flex items-center gap-6 group"
+      className="p-6 md:p-8 rounded-2xl bg-white shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-[#C9A46A]/10 hover:border-[#7A2F4E]/40 transition-all hover:shadow-2xl flex items-center gap-6 group"
     >
-      <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-xl bg-[#D10056]/5 flex items-center justify-center text-[#D10056] group-hover:bg-[#D10056] group-hover:text-white transition-all">
+      <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-xl bg-[#7A2F4E]/5 flex items-center justify-center text-[#7A2F4E] group-hover:bg-[#7A2F4E] group-hover:text-white transition-all">
         {icon}
       </div>
       <div className="text-left">
-        <h3 className="font-display font-bold text-[#D10056] text-base md:text-lg tracking-wide mb-1">{title}</h3>
-        <p className="font-serif font-medium text-[#008080] text-sm leading-snug">{desc}</p>
+        <h3 className="font-display font-bold text-[#7A2F4E] text-base md:text-lg tracking-wide mb-1">{title}</h3>
+        <p className="font-serif font-medium text-[#C9A46A] text-sm leading-snug">{desc}</p>
       </div>
     </motion.div>
   )

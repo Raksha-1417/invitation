@@ -1,4 +1,4 @@
-const COLORS = ['#D10056', '#008080', '#F5EDE0', '#D10056', '#008080']
+const COLORS = ['#7A2F4E', '#C9A46A', '#F5EDE0', '#7A2F4E', '#C9A46A']
 
 const SHAPES = [
   'M0,-12 C8,-8 10,-2 0,3 C-10,-2 -8,-8 0,-12',     // rose petal

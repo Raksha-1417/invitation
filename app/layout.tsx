@@ -33,19 +33,19 @@ const notoDevanagari = Noto_Serif_Devanagari({
 })
 
 export const viewport: Viewport = {
-  themeColor: '#D10056', // Updated to Pink palette
+  themeColor: '#7A2F4E', // Updated to Pink palette
 }
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://invitation-zeta-ten.vercel.app'),
-  title: 'Rohit & Nandini · 26 April 2026',
-  description: "You're invited to our wedding. With the blessings of the Ankad family.",
+  title: 'Naveen & Shreya · 14 May 2026',
+  description: "You're invited to our wedding. With the blessings of the Pattar family.",
   icons: {
     icon: '/icon.svg',
   },
   openGraph: {
-    title: 'Rohit & Nandini · Wedding Invitation',
-    description: "You're invited to our wedding. 26 April 2026, Nashik.",
+    title: 'Naveen & Shreya · Wedding Invitation',
+    description: "You're invited to our wedding. 14 May 2026, Belagavi.",
     images: [{ url: '/opengraph-image.jpg', width: 1200, height: 630 }],
     type: 'website',
   },

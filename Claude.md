@@ -1,5 +1,5 @@
 # claude.md
-## Build Spec — Rohit & Nandini Wedding Invitation (Ankad Family)
+## Build Spec — Naveen & Shreya Wedding Invitation (Ankad Family)
 
 > **Version 3** — Royal Peshwai palette + caricature hero.
 > This file is the single source of truth. Any AI assistant or developer opening this project reads this first and follows it exactly.
@@ -60,18 +60,18 @@ Analytics:     Vercel Analytics (free)
 
 ```
 Family:          Ankad family
-Couple:          Rohit & Nandini
-Wedding date:    26 April 2026
-Wedding time:    12:43 PM
+Couple:          Naveen & Shreya
+Wedding date:    14 May 2026
+Wedding time:    12:32 PM
 Venue:           Swapnapurti Lawns
 Address:         Opp Shell Petrol Pump, Near Mirchi Hotel,
-                 Nandur Naka, Nashik
+                 Nandur Naka, Belagavi
 Maps link:       https://maps.app.goo.gl/xDXkPKzS7PEKkJ9y5
 
 Ceremonies:
   - Mehendi  — 23 April 2026
   - Haldi    — 25 April 2026
-  - Vivah    — 26 April 2026, 12:43 PM
+  - Vivah    — 14 May 2026, 12:32 PM
 ```
 
 Invitation opening line (hero section):
@@ -214,7 +214,7 @@ On first reveal, the caricature fades in AFTER the names (500ms delay, scale fro
 ## Project File Structure
 
 ```
-rohit-nandini-invitation/
+naveen-shreya-invitation/
 ├── app/
 │   ├── layout.tsx              ← fonts, metadata, OG tags
 │   ├── page.tsx                ← single-page assembly of all sections
@@ -300,9 +300,9 @@ Stacked center-aligned, framer-motion staggered reveal on mount. Order matters:
 2. Thin gold divider with center paisley — 60px wide
 3. Italic: *"With the blessings of the Ankad family, we invite you to celebrate our wedding"* — `font-serif` 300 italic, 14px, `text-ink-soft`
 4. Spacer 20px
-5. `Rohit` — `font-display` 500, 44px, **`text-rani`**
+5. `Naveen` — `font-display` 500, 44px, **`text-rani`**
 6. `&` — `font-script`, 52px, `text-maroon`
-7. `Nandini` — `font-display` 500, 44px, **`text-rani`**
+7. `Shreya` — `font-display` 500, 44px, **`text-rani`**
 8. Spacer 24px
 9. **`<MandapArch>` component** containing the caricature:
    - Gold mandap-arch SVG frame, ~300px wide, ~340px tall
@@ -312,7 +312,7 @@ Stacked center-aligned, framer-motion staggered reveal on mount. Order matters:
 10. Spacer 24px
 11. Ornamental peacock-feather SVG divider in gold
 12. Date: `26 . 04 . 2026` — `font-display`, 22px, `text-maroon`, `tracking-[0.3em]`
-13. Sub-line: `Sunday · रविवार` — `font-serif` 14px `text-ink-soft`
+13. Sub-line: `Thursday · रविवार` — `font-serif` 14px `text-ink-soft`
 14. Bottom: animated scroll cue (bouncing chevron in gold, Framer Motion `repeat: Infinity`)
 
 Background: solid cream. Four paisley SVG watermarks at corners at opacity 0.08 in rose.
@@ -324,9 +324,9 @@ Background: solid cream. Four paisley SVG watermarks at corners at opacity 0.08 
 Greeting (शुभ विवाह)     → 0ms
 Divider                  → 150ms
 Blessing line            → 300ms
-Rohit                    → 450ms
+Naveen                    → 450ms
 &                        → 600ms
-Nandini                  → 750ms
+Shreya                  → 750ms
 Caricature in arch       → 1100ms (scale 0.95→1, fade in, duration 900ms)
 Peacock divider          → 1600ms
 Date                     → 1750ms
@@ -372,7 +372,7 @@ Data:
 const ceremonies = [
   { en: 'Mehendi', mr: 'मेहंदी', date: '23 April 2026', note: 'Adorning the bride' },
   { en: 'Haldi',   mr: 'हळद',   date: '25 April 2026', note: 'Golden blessings' },
-  { en: 'Vivah',   mr: 'विवाह', date: '26 April 2026, 12:43 PM', note: 'The sacred union' },
+  { en: 'Vivah',   mr: 'विवाह', date: '14 May 2026, 12:32 PM', note: 'The sacred union' },
 ]
 ```
 
@@ -412,13 +412,13 @@ Icons (inline SVG in `/components/svg/`, 1.5px stroke in teal):
 - Monogram `R & N` in `font-script`, 72px, `text-gold`, inside thin circular gold frame (80px outer ring)
 - Thin gold divider
 - `With love,` — `font-script` 24px `text-maroon`
-- `Rohit & Nandini` — `font-display` 16px `text-rani`
+- `Naveen & Shreya` — `font-display` 16px `text-rani`
 - Spacer 32px
 - **`<ActionButtons />`** — three buttons in a row (stacked below 360px):
 
   1. **Share** → opens `https://wa.me/?text=${encoded}` with:
-     > *"You're invited to Rohit & Nandini's wedding on 26th April 2026. Open the invitation: {{DEPLOY_URL}}"*
-  2. **Add to Calendar** → calls `generateICS()`, triggers download of `rohit-nandini-wedding.ics`
+     > *"You're invited to Naveen & Shreya's wedding on 14th May 2026. Open the invitation: {{DEPLOY_URL}}"*
+  2. **Add to Calendar** → calls `generateICS()`, triggers download of `naveen-shreya-wedding.ics`
   3. **Directions** → opens the Google Maps link
 
   Each button: `border border-gold bg-transparent text-maroon font-display uppercase text-xs tracking-wider px-4 py-3`, `hover:bg-gold hover:text-cream transition`. Icon + label stacked.
@@ -471,11 +471,11 @@ export const caricatureReveal = {
 In `app/layout.tsx`:
 ```ts
 export const metadata: Metadata = {
-  title: 'Rohit & Nandini · 26 April 2026',
+  title: 'Naveen & Shreya · 14 May 2026',
   description: "You're invited to our wedding. With the blessings of the Ankad family.",
   openGraph: {
-    title: 'Rohit & Nandini · Wedding Invitation',
-    description: "You're invited to our wedding. 26 April 2026, Nashik.",
+    title: 'Naveen & Shreya · Wedding Invitation',
+    description: "You're invited to our wedding. 14 May 2026, Belagavi.",
     images: [{ url: '/opengraph-image.jpg', width: 1200, height: 630 }],
     type: 'website',
   },
@@ -509,7 +509,7 @@ export const metadata: Metadata = {
 - All buttons have visible focus states: `focus-visible:outline-2 focus-visible:outline-rani focus-visible:outline-offset-2`
 - Envelope has proper ARIA label and keyboard support (Enter, Space)
 - Decorative SVGs are `aria-hidden`
-- Caricature `<Image>` has descriptive `alt="Illustrated portrait of Rohit and Nandini in traditional Maharashtrian wedding attire"`
+- Caricature `<Image>` has descriptive `alt="Illustrated portrait of Naveen and Shreya in traditional Maharashtrian wedding attire"`
 - Honor `prefers-reduced-motion` in both GSAP (check `matchMedia`) and Framer Motion (`useReducedMotion`)
 - Skip link at top of page: "Skip to main content"
 

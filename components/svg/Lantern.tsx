@@ -3,7 +3,7 @@ interface Props {
   className?: string
 }
 
-export default function Lantern({ color = '#008080', className }: Props) {
+export default function Lantern({ color = '#C9A46A', className }: Props) {
   return (
     <svg
       viewBox="0 0 28 72"

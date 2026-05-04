@@ -32,30 +32,30 @@ export default function MusicPlayer({ playing, onToggle }: Props) {
             e.stopPropagation() // Prevent window listener from re-starting music
             onToggle()
           }}
-          className="relative flex items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-[#D10056] focus-visible:outline-offset-2"
+          className="relative flex items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-[#7A2F4E] focus-visible:outline-offset-2"
           style={{
             width: 48,
             height: 48,
-            background: 'linear-gradient(135deg, #008080, #006666)',
-            boxShadow: '0 4px 16px rgba(0,128,128,0.4), 0 0 0 2px rgba(245,237,224,0.4)',
+            background: 'linear-gradient(135deg, #C9A46A, #006666)',
+            boxShadow: '0 4px 16px rgba(201,164,106,0.4), 0 0 0 2px rgba(245,237,224,0.4)',
           }}
         >
           {/* Pulse ring when playing */}
           {playing && (
             <span
               className="absolute inset-0 rounded-full animate-ping"
-              style={{ background: 'rgba(0,128,128,0.25)' }}
+              style={{ background: 'rgba(201,164,106,0.25)' }}
             />
           )}
           {playing ? (
             /* Pause icon */
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#F5EDE0]" fill="currentColor" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#FAF3EE]" fill="currentColor" aria-hidden="true">
               <rect x="6" y="5" width="4" height="14" rx="1" />
               <rect x="14" y="5" width="4" height="14" rx="1" />
             </svg>
           ) : (
             /* Play icon */
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#F5EDE0]" fill="currentColor" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#FAF3EE]" fill="currentColor" aria-hidden="true">
               <path d="M8 5.14v14l11-7-11-7z" />
             </svg>
           )}
@@ -63,7 +63,7 @@ export default function MusicPlayer({ playing, onToggle }: Props) {
 
         {/* Tooltip */}
         <span
-          className="absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-[10px] uppercase tracking-widest text-[#008080] bg-[#F5EDE0]/90 backdrop-blur-sm border border-[#008080]/20 rounded-full px-3 py-1 pointer-events-none shadow-sm"
+          className="absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-[10px] uppercase tracking-widest text-[#C9A46A] bg-[#FAF3EE]/90 backdrop-blur-sm border border-[#C9A46A]/20 rounded-full px-3 py-1 pointer-events-none shadow-sm"
           style={{ opacity: 0.9 }}
         >
           {playing ? 'Music Playing' : 'Play Music'}
