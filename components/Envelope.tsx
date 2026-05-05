@@ -82,11 +82,11 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
           <div className="absolute top-0 left-0 w-full flex flex-col items-center pt-8 md:pt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
             <img 
               src="/elements/3image.png" 
-              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[22vh] md:max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
             />
           </div>
-          <div className="flex flex-col items-center mt-12 md:mt-16" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
-            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
+          <div className="flex flex-col items-center mt-6 md:mt-10" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[42vh] md:max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
           </div>
         </div>
 
@@ -116,11 +116,11 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
           <div className="absolute top-0 left-0 w-full flex flex-col items-center pt-8 md:pt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
             <img 
               src="/elements/3image.png" 
-              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[22vh] md:max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
             />
           </div>
-          <div className="flex flex-col items-center mt-12 md:mt-16" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
-            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
+          <div className="flex flex-col items-center mt-6 md:mt-10" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[42vh] md:max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
           </div>
         </div>
 
@@ -141,7 +141,7 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
       >
         <div className="relative flex flex-col items-center w-full h-full">
           <div 
-            className="absolute bottom-32 md:bottom-36 left-0 w-full flex flex-col items-center"
+            className="absolute bottom-16 md:bottom-32 left-0 w-full flex flex-col items-center"
             style={{ animation: 'fadeInScale 1.5s ease-in-out forwards', animationDelay: '0.2s', opacity: 0 }}
           >
             <button

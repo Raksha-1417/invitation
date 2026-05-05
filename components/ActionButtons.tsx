@@ -58,11 +58,11 @@ const buttons = [
 export default function ActionButtons() {
   const prefersReduced = useReducedMotion()
 
-  const handleClick = async (action: string) => {
+  const handleClick = (action: string) => {
     if (action === 'share') {
       window.open(getWhatsAppShareUrl(), '_blank', 'noopener,noreferrer')
     } else if (action === 'calendar') {
-      await generateICS()
+      generateICS()
       if (!prefersReduced) {
         triggerPetalShower()
       }

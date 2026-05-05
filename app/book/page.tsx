@@ -7,6 +7,7 @@ import Link from 'next/link'
 import BookingForm from '@/components/BookingForm'
 import { scrollReveal, fadeUp } from '@/lib/motion'
 import { WHATSAPP_NUMBER } from '@/lib/share'
+import { WHATSAPP_NUMBER_BOOKING } from '@/lib/share'
 
 const PREMIUM_CAPTIONS = [
   "Your special day deserves more than an invitation — it deserves a beautiful digital experience.",
@@ -47,8 +48,8 @@ export default function BookingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#F5EDE0]" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl pt-10 md:pt-16">
+      {/* Hero Content */}
+        <div className="relative z-10 text-center px-4 max-w-4xl pt-10 md:pt-16 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,22 +57,22 @@ export default function BookingPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/80 text-[10px] font-display tracking-[0.3em] uppercase hover:bg-white/20 transition-all"
+              className="inline-flex items-center gap-2 mb-5 md:mb-8 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/80 text-[10px] font-display tracking-[0.3em] uppercase hover:bg-white/20 transition-all"
             >
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
               Back to Invitation
             </Link>
 
-            <h1 className="font-display text-white text-[30px] md:text-[48px] lg:text-[64px] leading-tight mb-3 md:mb-5 tracking-tight drop-shadow-2xl px-2">
+            <h1 className="font-display text-white text-[24px] sm:text-[30px] md:text-[48px] lg:text-[64px] leading-tight mb-2 md:mb-5 tracking-tight drop-shadow-2xl px-2">
               Book Your Digital <br className="hidden lg:block" /> Invitation Website
             </h1>
 
-            <p className="font-serif italic text-white/95 text-base md:text-xl lg:text-2xl max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed drop-shadow-xl px-4">
+            <p className="font-serif italic text-white/95 text-sm sm:text-base md:text-xl lg:text-2xl max-w-2xl mx-auto mb-4 md:mb-8 leading-relaxed drop-shadow-xl px-4">
               Beautiful digital invitation websites crafted for weddings, birthdays, baby showers, anniversaries, and every special celebration.
             </p>
 
-           {/* Rotating Captions with High-Visibility Background */}
-            <div className="h-16 md:h-20 flex items-center justify-center">
+            {/* Rotating Captions — min-height prevents layout shift, overflow-hidden stops bleed */}
+            <div className="min-h-[3.5rem] md:min-h-[5rem] flex items-center justify-center overflow-hidden px-2">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={captionIndex}
@@ -79,10 +80,10 @@ export default function BookingPage() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -15 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="px-4 md:px-8 py-2 md:py-4 rounded-full bg-black/25 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.25)] mx-2"
+                  className="px-3 md:px-8 py-2 md:py-4 rounded-full bg-black/25 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.25)] mx-2 max-w-[95vw]"
                 >
                   <p
-                    className="font-display font-black text-[10px] md:text-xl tracking-[0.2em] md:tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    className="font-display font-black text-[9px] sm:text-[11px] md:text-xl tracking-[0.15em] md:tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] leading-tight"
                     style={{
                       background: 'linear-gradient(90deg, #7A2F4E 0%, #8B3A4A 50%, #7A2F4E 100%)',
                       backgroundSize: '200% auto',
@@ -163,7 +164,7 @@ export default function BookingPage() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-10">
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER_BOOKING.replace(/\D/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-5 px-10 py-6 rounded-full bg-white shadow-2xl shadow-black/10 hover:shadow-3xl transition-all hover:-translate-y-1 group"
@@ -173,7 +174,7 @@ export default function BookingPage() {
               </div>
               <div className="text-left">
                 <p className="text-[12px] font-display font-bold text-ink-soft tracking-widest uppercase">WhatsApp</p>
-                <p className="font-display font-medium text-[#C9A46A] text-lg">{WHATSAPP_NUMBER}</p>
+                <p className="font-display font-medium text-[#C9A46A] text-lg">{WHATSAPP_NUMBER_BOOKING}</p>
               </div>
             </a>
           </div>

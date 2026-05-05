@@ -1,6 +1,7 @@
 const DEPLOY_URL = 'https://naveen-shreya.vercel.app'
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/jxqQPP7D2MW8DiaQ9'
 export const WHATSAPP_NUMBER = '+91 9741624840'
+export const WHATSAPP_NUMBER_BOOKING = '+91 9591617518'
 
 export function getWhatsAppShareUrl(): string {
   const message = `Naveen & Shreya ❤️

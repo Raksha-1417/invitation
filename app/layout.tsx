@@ -53,9 +53,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${cinzel.variable} ${cormorant.variable} ${greatVibes.variable} ${notoDevanagari.variable} bg-cream`}
+        className={`${cinzel.variable} ${cormorant.variable} ${greatVibes.variable} ${notoDevanagari.variable} bg-cream overflow-x-hidden`}
       >
         <a
           href="#main-content"
