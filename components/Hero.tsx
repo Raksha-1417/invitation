@@ -144,50 +144,49 @@ export default function Hero() {
     >
       {/* ── Fixed scroll indicator ── */}
       <motion.div
-        className="fixed bottom-24 left-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none"
+        className="fixed bottom-24 md:bottom-28 left-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none"
         style={{ translateX: '-50%' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? 20 : 0 }}
-        transition={{ duration: 0.6, delay: scrolled ? 0 : 2 }}
+        transition={{ duration: 0.6, delay: scrolled ? 0 : 0.5 }}
       >
         {/* Pill container */}
         <div style={{
           background: 'linear-gradient(135deg, #7A2F4E 0%, #A8576A 100%)',
           borderRadius: '999px',
-          padding: '6px 20px 6px',
-          boxShadow: '0 0 16px rgba(201,164,106,0.4), 0 3px 10px rgba(122,47,78,0.3)',
-          border: '1px solid rgba(201,164,106,0.6)',
+          padding: '8px 24px 8px',
+          boxShadow: '0 0 20px rgba(201,164,106,0.5), 0 4px 12px rgba(122,47,78,0.4)',
+          border: '1px solid rgba(201,164,106,0.8)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 4,
+          gap: 6,
         }}>
           {/* Text */}
           <motion.span
+            className="font-sans font-semibold drop-shadow-sm"
             style={{
-              fontSize: 10,
+              fontSize: '11px',
               color: '#FAF3EE',
-              fontFamily: 'serif',
-              fontStyle: 'italic',
-              letterSpacing: '0.2em',
+              letterSpacing: '0.25em',
               textTransform: 'uppercase',
               whiteSpace: 'nowrap',
             }}
-            animate={{ opacity: [0.7, 1, 0.7] }}
+            animate={{ opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           >
             Scroll Down
           </motion.span>
           {/* Arrows */}
-          <div className="flex flex-col items-center" style={{ gap: 1 }}>
-            {([0, 0.18, 0.36] as number[]).map((delay, i) => (
+          <div className="flex flex-col items-center" style={{ gap: 2 }}>
+            {([0, 0.2, 0.4] as number[]).map((delay, i) => (
               <motion.svg
                 key={i}
-                width="16" height="8" viewBox="0 0 20 11" fill="none"
+                width="18" height="9" viewBox="0 0 20 11" fill="none"
                 animate={{ y: [0, 4, 0], opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 1.3, repeat: Infinity, ease: 'easeInOut', delay }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay }}
               >
-                <path d="M1 1L10 10L19 1" stroke="#C9A46A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 1L10 10L19 1" stroke="#C9A46A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </motion.svg>
             ))}
           </div>

@@ -56,7 +56,11 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
   if (isHidden) return null
 
   return (
-    <div className="fixed inset-0 z-[9999] flex overflow-hidden pointer-events-auto">
+    <div 
+      className="fixed inset-0 z-[9999] flex overflow-hidden pointer-events-auto"
+      onWheel={handleClick}
+      onTouchMove={handleClick}
+    >
       <style dangerouslySetInnerHTML={{ __html: SHIMMER_CSS }} />
 
       {/* Left Curtain */}
@@ -75,14 +79,14 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
         
         {/* Content Half - Perfectly centered on screen, clipped at 50% */}
         <div className="absolute top-0 left-0 w-[200%] h-full flex flex-col items-center justify-center pointer-events-none">
-          <div className="absolute top-0 left-0 w-full flex flex-col items-center" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+          <div className="absolute top-0 left-0 w-full flex flex-col items-center pt-8 md:pt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
             <img 
               src="/elements/3image.png" 
-              className="w-[85vw] md:w-[50vw] max-w-[550px] mix-blend-multiply drop-shadow-xl" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
             />
           </div>
-          <div className="flex flex-col items-center mt-8 md:mt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
-            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain mix-blend-multiply drop-shadow-2xl" />
+          <div className="flex flex-col items-center mt-12 md:mt-16" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
           </div>
         </div>
 
@@ -109,14 +113,14 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
 
         {/* Content Half - Perfectly centered on screen, clipped at 50% */}
         <div className="absolute top-0 -left-full w-[200%] h-full flex flex-col items-center justify-center pointer-events-none">
-          <div className="absolute top-0 left-0 w-full flex flex-col items-center" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+          <div className="absolute top-0 left-0 w-full flex flex-col items-center pt-8 md:pt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
             <img 
               src="/elements/3image.png" 
-              className="w-[85vw] md:w-[50vw] max-w-[550px] mix-blend-multiply drop-shadow-xl" 
+              className="w-[85vw] md:w-[50vw] max-w-[550px] max-h-[25vh] object-contain mix-blend-multiply drop-shadow-xl" 
             />
           </div>
-          <div className="flex flex-col items-center mt-8 md:mt-12" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
-            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain mix-blend-multiply drop-shadow-2xl" />
+          <div className="flex flex-col items-center mt-12 md:mt-16" style={{ animation: 'fadeInScale 1.5s ease-in-out forwards' }}>
+            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] max-h-[50vh] object-contain mix-blend-multiply drop-shadow-2xl" />
           </div>
         </div>
 
@@ -135,23 +139,19 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
           transform: isOpen ? 'scale(0.9)' : 'scale(1)'
         }}
       >
-        <div className="relative flex flex-col items-center w-full">
-          {/* Transparent placeholder that exactly matches the logo so the button flows correctly! */}
-          <div className="flex flex-col items-center pointer-events-none opacity-0 mt-8 md:mt-12">
-            <img src="/elements/logo.png" className="w-[85vw] md:w-[50vw] max-w-[650px] object-contain" aria-hidden="true" />
-          </div>
-
+        <div className="relative flex flex-col items-center w-full h-full">
           <div 
-            className="absolute top-full left-0 w-full flex flex-col items-center pt-8"
+            className="absolute bottom-32 md:bottom-36 left-0 w-full flex flex-col items-center"
             style={{ animation: 'fadeInScale 1.5s ease-in-out forwards', animationDelay: '0.2s', opacity: 0 }}
           >
             <button
               onClick={handleClick}
-              className="pointer-events-auto btn-pulse group relative px-14 py-5 font-sans font-semibold text-base md:text-xl tracking-widest uppercase overflow-hidden rounded-full transition-colors duration-300 shadow-2xl hover:bg-[#5E233B]"
+              className="pointer-events-auto btn-pulse group relative px-10 py-[14px] font-sans font-bold text-sm md:text-base tracking-widest uppercase overflow-hidden rounded-full transition-colors duration-300 shadow-2xl hover:bg-[#5E233B]"
               style={{ 
                 backgroundColor: '#7A2F4E', 
                 color: '#FFFFFF', 
-                border: '1px solid rgba(255,255,255,0.2)' 
+                border: '1px solid rgba(255,255,255,0.2)',
+                minWidth: '240px'
               }}
             >
               <span className="relative z-10 drop-shadow-sm group-hover:scale-105 transition-transform duration-300 block">
@@ -159,12 +159,20 @@ export default function Envelope({ onStartMusic, onOpen }: Props) {
               </span>
             </button>
             
-            <p className="mt-8 text-xs md:text-sm text-[#F5E8E2] italic opacity-90 animate-pulse font-sans tracking-widest drop-shadow-md">
+            <p className="mt-6 text-[11px] md:text-[13px] text-[#F5E8E2] italic opacity-90 animate-pulse font-serif tracking-widest drop-shadow-md">
               ✦ Tap to begin the celebration ✦
             </p>
           </div>
         </div>
       </div>
+      
+      {/* Inline animation for bouncing arrows */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes bounceDown {
+          0%, 100% { transform: translateY(0); opacity: 0.4; }
+          50% { transform: translateY(4px); opacity: 1; }
+        }
+      `}} />
     </div>
   )
 }

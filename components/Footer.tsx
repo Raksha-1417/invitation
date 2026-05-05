@@ -100,9 +100,11 @@ export default function Footer() {
       <motion.div whileHover={{ y: -3, scale: 1.03 }} transition={{ type: 'spring', stiffness: 300 }}>
         <Link
           href="/book"
-          className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-[#7A2F4E] to-[#8B3A4A] text-white font-display text-[11px] tracking-[0.2em] uppercase rounded-full shadow-lg shadow-[#7A2F4E]/20 transition-all active:scale-95"
+          className="inline-flex items-center justify-center mt-4 px-4 sm:px-8 py-3 bg-gradient-to-r from-[#7A2F4E] to-[#8B3A4A] text-white font-display text-[10px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.2em] uppercase rounded-full shadow-lg shadow-[#7A2F4E]/20 transition-all active:scale-95 max-w-[90%] mx-auto"
         >
-          Book Your Own Invitation website →
+          <span className="text-center">
+            Book Your Own Invitation <span className="whitespace-nowrap">Website &rarr;</span>
+          </span>
         </Link>
       </motion.div>
 
